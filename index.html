@@ -142,10 +142,13 @@ button.castc.sel{border-color:var(--spot);box-shadow:inset 0 0 0 1px var(--spot)
 .pin.on{color:#e0a92e}
 .card .pin{color:#8d8170}.card .pin.on{color:#f0b83a}
 .evbtn.pinned{border-color:#e0a92e}
-.tl{display:flex!important;align-items:center;gap:6px;min-width:0}
-.tl .nm{min-width:0;flex:0 1 auto}
-.tl .stamp{flex:none;margin-left:2px!important;vertical-align:0!important}
-.tl .pin{flex:none;margin:0!important;padding:2px 2px 2px 0}
+.ttl{display:flex!important;align-items:center;gap:6px;min-width:0}
+.ttl .nm{min-width:0;flex:0 1 auto}
+.ttl .stamp{flex:none;margin-left:2px!important;vertical-align:0!important}
+.ttl .pin{flex:none;margin:0!important;padding:2px 2px 2px 0}
+.fmark{display:block;height:0}
+.tl small{display:block;color:#8a7a62;font-size:11px;margin-top:1px}
+.tl .tlh{display:block;border:0;padding:10px 0 2px;font-weight:700;color:#5a4a3a;font-size:12px;letter-spacing:.08em}
 .nbody{min-height:0;overflow:auto;padding:14px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));display:grid;gap:14px;align-content:start}
 .nsec{display:grid;gap:6px}
 .nsec h4{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
@@ -547,7 +550,7 @@ function 인물(o){window.__CHARS.push(o)}
 사건({
   범인: "sungmin",
   피해자: "구본창 교주",
-  저장키: "guwon-r-v3",
+  저장키: "guwon-r-v4",
   제목: "구원교 교주 살인 사건",
   부제: "추리게임 크라임씬 Episode R",
   제목문구: "아무도 울지 않는 사이비 마을, 청년부 수련회의 밤",
@@ -572,11 +575,11 @@ function 인물(o){window.__CHARS.push(o)}
 
   /* ---------- 알리바이 탭의 '이 말에 증거를 내민다' ---------- */
   모순: [
-    { 누구: "jeongmo", 말: "그 뒤로는 밤새 방에서 기도했습니다.", 증거: ["녹음 파일의 공백"],
+    { 누구: "jeongmo", 말: "그 뒤로는 밤새 방에서 기도했습니다.", 증거: ["녹음 파일의 공백", "원진의 증언 — 정모의 외출", "원진의 증언 — 계단의 정모", "녹음 — 01:58 아버지"], 힌트: "보조: 밤새 방에 있었다는 사람이… 다른 방 녹음이나, 같은 방 사람 눈에 남아 있진 않을까요?",
       무너짐: `(오래 침묵한다) …방에 있지 않았습니다. 찬양팀실에 있었고, 그 12분 동안은 교주 방 금고에 다녀왔습니다. 제 여권을 꺼내려고요. 기도실엔 가지 않았습니다.` },
-    { 누구: "serim", 말: "이후 제 방에서 취침했고", 증거: ["쓰지 않은 침대"],
+    { 누구: "serim", 말: "이후 제 방에서 취침했고", 증거: ["쓰지 않은 침대", "CCTV — 01:18", "태영의 증언 — 01:36"], 힌트: "보조: 방에서 잤다면 침대가 말해 주겠죠. 아니면 밤새 돌아간 사무실 카메라가.",
       무너짐: `…방에서 자지 않았어요. 사무실 책상에 엎드려 밤을 샜어요. 눈을 감으면 그 방이 보였어요. 이유는… 아직 말 못 해요.` },
-    { 누구: "taeyoung", r: 2, 말: "기도실 쪽엔 간 적 없어요.", 증거: ["01:40의 메모", "복구된 메모 조각"],
+    { 누구: "taeyoung", r: 2, 말: "기도실 쪽엔 간 적 없어요.", 증거: ["01:40의 메모", "복구된 메모 조각", "토론 — 태영의 한 시 반"], 힌트: "보조: 태영 씨는 뭐든 휴대폰 메모장에 적어 두는 버릇이 있대요. 잠금 번호는… 데뷔 포스터에 있던 날짜였던가.",
       무너짐: `…갔어요. 한 시 반쯤, 기도실 문 앞까지. 넥타이를 양손에 감고 오래 서 있었어요. 문고리를 두 번 당겼는데 잠겨 있었어요. 그게 다예요.` }
   ],
 
@@ -607,7 +610,7 @@ function 인물(o){window.__CHARS.push(o)}
       { 제목: "한 시 반의 발소리",
         줄: [["taeyoung", "다들 왜 저만 봐요? 넥타이요? 저 그거 몰라요."],
              ["woobin", "하하… 태영아, 너 한 시 반에 나갔다 왔잖아."],
-             ["minhee", "저기… 그 시간이면, 저도 복도에서 발소리 들었어요. 본관 쪽으로 가는."],
+             ["minhee", "저기… 저도 밤에 복도에서 발소리 들었어요. 두 번이나."],
              ["sungmin", "…아버지 앞에서 이러시면 안 돼요."]],
         물음: "누구를 더 몰아붙일까?",
         선택: [
@@ -615,7 +618,7 @@ function 인물(o){window.__CHARS.push(o)}
           { l: "민희에게 들은 것을 묻는다", 줄: [["minhee", "발소리는 두 번이었어요. 두 시 조금 전엔 본관 쪽으로 나가는 소리, 두 시 이십 분쯤엔 2층 계단 쪽으로 가는 소리. 누군지는 못 봤어요."]], 준다: "토론 — 민희가 들은 발소리" }
         ] }
     ],
-    끝: "토론이 끝났다. 아무도 서로를 보지 않는다. 성민만 말없이 빈 찻잔들을 쟁반에 모은다."
+    끝: "토론이 끝났다. 아무도 서로를 보지 않는다. 성민만 말없이 빈 찻잔들을 쟁반에 모은다. 보조가 수첩을 덮으며 작게 말한다. “다들 ‘방에 있었다’고만 하네요. 노트 알리바이 탭에서, 그 말이랑 녹음이나 기록을 하나씩 맞대 봐요.”"
   },
 
   진범회상: {
@@ -631,7 +634,7 @@ function 인물(o){window.__CHARS.push(o)}
     메시지: [
       `탐정님, 사건입니다.`,
       `나리 마을 수련원에서 구원교 교주 구본창이 기도실에서 숨진 채 발견됐어요.`,
-      `마을로 들어오는 길은 밤새 눈에 막혀 있었어요. 그날 밤 수련원 안에 있던 사람은 수련회에 남은 아홉 명뿐입니다.`,
+      `마을로 들어오는 길은 밤새 눈에 막혀 있었어요. 그날 밤 수련원 안에 있던 사람은 수련회 참가자 여덟 명과 관리인 한 명, 아홉 명뿐입니다.`,
       `그리고… 이상한 게 하나 있어요. 시신을 본 사람들 중에 우는 사람이 아무도 없어요.`,
       `사건 파일 보내드릴게요.`
     ],
@@ -659,10 +662,10 @@ function 인물(o){window.__CHARS.push(o)}
     사망추정: "01:00 ~ 03:00",
     사망추정근거: [
       `05:40 탐정 보조가 잰 체온과 시신의 굳은 정도를 기준으로 했다. 눈 때문에 경찰과 검시관은 아직 마을에 들어오지 못했다.`,
-      `마지막 목격: 23:40, 기도실 시중 안성민이 대추차를 들고 들어갔다가 23:45에 나왔다.`,
+      `당시 확인된 마지막 목격: 23:40, 기도실 시중 안성민이 대추차를 들고 들어갔다가 23:45에 나왔다.`,
       `기도실 문은 안에서 잠겨 있었고, 열쇠는 교주의 주머니에 있었다.`
     ],
-    용의자머리: ["용의자", "교주를 ‘아버지’라 부르던 아홉 명"]
+    용의자머리: ["용의자", "교주와 얽힌 아홉 명 — 수련회 참가자 여덟과 관리인 한 명"]
   },
 
   /* ---------- 탐정 노트 '사건 개요' 탭 ---------- */
@@ -707,7 +710,7 @@ function 인물(o){window.__CHARS.push(o)}
   /* ---------- 시계 (증거가 나오는 조사를 할 때마다 시간이 흐른다. 횟수 = 마감 시각에 닿는 조사 수. 조사를 막지는 않는다) ---------- */
   시계: {
     1: { 시작: "06:00", 끝: "11:00", 횟수: 50, 마감: "점심 토론" },
-    2: { 시작: "13:00", 끝: "18:00", 횟수: 45, 마감: "산기도원 차 출발" }
+    2: { 시작: "13:00", 끝: "18:00", 횟수: 45, 마감: "산기도원 차 출발 예정" }
   },
 
   /* ---------- 실시간 사건 (조사 횟수가 at에 이르면 터진다) ---------- */
@@ -750,9 +753,9 @@ function 인물(o){window.__CHARS.push(o)}
       글: [`복도 확성기에서 갑자기 잡음이 터진다. 그리고 목소리.`, `“…아버지는 모든 것을 보신다. 숨는 자도, 도망치는 자도, 문 뒤에서 웃는 자도.”`, `죽은 교주의 목소리다. 세림이 달려가 방송실 전원을 뽑는다. 덱에 꽂혀 있던 테이프에는 라벨이 없다. 아무도 틀지 않았다고 한다.`, `보조: “대예배당 강단 아래에도 카세트가 하나 있었죠. 그 테이프… 끝까지 들어 본 사람이 있을까요?”`] },
     { id: "ev_voice2", r: 2, at: 30, 조건: ["녹음 — 23:52 벽 너머"], 시각: "17:10", 제목: "혼자 도는 녹음기", 소리: "tape",
       글: [`기도실에서 소리가 난다. 아무도 없는 방. 강대상 위 녹음기가 혼자 돌아가고 있다.`, `새벽 04:50에 배터리가 다 됐던 녹음기다. 누군가 배터리를 갈아 끼웠다. 테이프는 처음으로 감겨 있다.`, `“…아버지는 모든 것을 보신다.”`, `그리고 테이프 끝에서, 찌이익— 끈적한 것을 길게 뜯는 소리.`, `보조의 얼굴이 하얘진다. “탐정님. 이 소리… 어젯밤 녹음 23:52에 벽 너머에서 나던 소리랑 똑같아요.”`] },
-    { id: "ev_last", r: 2, at: 1, 최종: true, 조건: ["성민의 패딩", "연통 받침의 반사 실밥", "소각로의 타다 남은 비닐", "녹음 — 04:45 마지막"], 제목: "시동", 소리: "knock",
-      글: [`수련원 앞에서 엔진이 깨어난다. 흰 승합차의 전조등이 대예배당 유리창을 훑는다.`, `함 장로의 확성기. “동행자는 차에 오르십시오. 아버지의 뜻입니다.”`, `원진이 현관 앞에서 멈춰 선다. 뒤를 돌아보지 않는다.`, `보조: “탐정님. 저 차가 떠나면 아무것도 되돌릴 수 없어요. 지금 말해야 해요.”`],
-      배너: "산기도원 차가 시동을 걸었다. 차가 떠나기 전에 지목해야 한다." },
+    { id: "ev_last", r: 2, at: 36, 최종: true, 조건: ["성민의 패딩", "연통 받침의 반사 실밥", "소각로의 타다 남은 비닐", "녹음 — 04:45 마지막"], 제목: "시동", 소리: "knock",
+      글: [`수련원 앞, 공회전하던 승합차의 엔진 소리가 높아진다. 전조등이 대예배당 유리창을 훑는다.`, `함 장로의 확성기. “동행자는 차에 오르십시오. 아버지의 뜻입니다.”`, `원진이 현관 앞에서 멈춰 선다. 뒤를 돌아보지 않는다.`, `보조: “탐정님. 저 차가 떠나면 아무것도 되돌릴 수 없어요. 지금 말해야 해요.”`],
+      배너: "산기도원 차의 엔진 소리가 높아진다. 원진의 이름은 아직 동행자 칸에 있다." },
     { id: "ev_cosus", r: 2, at: 1, 조건: ["붉은 얼굴", "난로 옆 경고문", "검안 메모", "난로 속 장작"], 제목: "붉은 피", 소리: "heart",
       글: [`보조가 노트를 덮는다. “탐정님. 붉은 얼굴, 선홍색 시반, 봉해진 창, 넣자마자 숨이 막힌 장작.”`, `“이거… 가스예요. 냄새도 색도 없는 거.”`, `형준이 문간에서 고개를 든다. “보일러실에 일산화탄소 측정기 있어요. 남은 장작으로 직접 재 봐요. 연통은 제가 막을게요. 숫자가 위험해지면 바로 나와야 해요.”`] },
     { id: "ev_van", r: 2, at: 34, 시각: "17:20", 제목: "흰 승합차", 소리: "knock",
@@ -784,16 +787,6 @@ function 인물(o){window.__CHARS.push(o)}
     serim: ["CCTV — 23:48~23:56"], allen: ["앨런의 통화 기록"], jeongmo: ["원진의 증언 — 계단의 정모"],
     woobin: ["녹음 파일의 23:52"], taeyoung: ["녹음 파일의 23:52"], wonjin: ["민희의 녹음기"],
     minhee: ["민희의 녹음기", "민희의 노트북"], hyungjun: ["제어판 상세 기록"]
-  },
-
-  /* ---------- 23:52 재구성 (탐정 노트 ‘23:52’ 탭, 2차) ---------- */
-  재구성: {
-    시각: "23:52",
-    안내: "연통 쪽에서 테이프 소리가 녹음된 그 순간, 아홉 명은 각자 어디에 있었나. 고른 장소가 증거로 뒷받침되면 ‘확인’ 도장이 찍힌다.",
-    장소: ["기도실", "대예배당", "뒷문 계단", "찬양팀실", "사무실", "식당", "창고", "교역자숙소 (별관 2층)", "청년부숙소 (별관 1층)", "뒷골목 (연통 앞)", "보일러실"],
-    정답: { serim: "사무실", allen: "뒷문 계단", jeongmo: "교역자숙소 (별관 2층)", woobin: "찬양팀실", taeyoung: "찬양팀실", wonjin: "청년부숙소 (별관 1층)", minhee: "청년부숙소 (별관 1층)", hyungjun: "보일러실", sungmin: "뒷골목 (연통 앞)" },
-    증거: { serim: ["CCTV — 23:48~23:56"], allen: ["앨런의 통화 기록", "앨런의 증언 — 연통 앞 그림자"], jeongmo: ["원진의 증언 — 계단의 정모"], woobin: ["녹음 파일의 23:52"], taeyoung: ["녹음 파일의 23:52"], wonjin: ["민희의 녹음기"], minhee: ["민희의 녹음기", "민희의 노트북"], hyungjun: ["제어판 상세 기록"] },
-    완성: "23:52. 증거로 설명되는 사람은 여덟 명. 남은 한 사람에게는, 그 시각을 증명해 줄 것이 아무것도 없다."
   },
 
   /* ---------- 1차 지목 후 문구 ---------- */
@@ -877,7 +870,7 @@ function 인물(o){window.__CHARS.push(o)}
   /* ---------- 알리바이 탭 맨 위 기준 시각 (r: 몇 차에 보일지, need: 이 증거를 찾아야 보임) ---------- */
   알리바이기준: [
     {r:1, k:"사망 추정 (보조 검안)", t:"01:00 ~ 03:00"},
-    {r:1, k:"마지막 목격", t:"23:45 기도실 문이 잠김"},
+    {r:1, k:"당시 확인된 마지막 목격", t:"23:45 기도실 문이 잠김"},
     {r:2, k:"사망 추정 (다시 검안)", t:"01:30 ~ 02:30"},
     {r:2, k:"배기가 막힌 시각 (난로 속 장작)", t:"23:50 무렵", need:"p_burn"},
     {r:2, k:"교주가 쓰러진 시각 (녹음)", t:"01:02", need:"rc_0102"}
@@ -972,7 +965,7 @@ function 인물(o){window.__CHARS.push(o)}
     {id:"n_drawer", l:"prayer", r:1, d:"강대상 서랍을 당겨 본다", x:"잠겨 있다. 작은 놋쇠 자물쇠. 열쇠 구멍 둘레에 새로 긁힌 칼자국이 여럿 나 있다."},
     {id:"n_cushion", l:"prayer", r:1, d:"방석을 들춰 본다", x:"방석을 들추자 마룻바닥에 손톱으로 긁은 글자가 드러난다. ‘순애’. 수십 번. 그리고 그 위를 다시 긁어 지운 자국. 무릎 자국은 정확히 그 이름 위에 패어 있다."},
     {id:"d_autopsy", l:"prayer", r:2, d:"탐정 보조의 검안 메모를 읽는다", c:["p_autopsy"]},
-    {id:"d_comeas", l:"prayer", r:2, ev:"ev_cosus", shockAlways:1, d:"형준과 연통을 막고, 측정기로 기도실의 공기를 잰다", c:["a_cotest"], game:{type:"meter", 순서:1, 자리:["10분","30분","50분","70분","90분"], 값:["90","350","800","1,500","2,600"], 말:["이상 없음","가벼운 두통","심한 두통 · 기침","일어서지 못한다 · 문까지 못 간다","의식 없음"], 정답:4, 안내:"형준이 뒷골목에서 연통 끝을 막았다. 남은 장작에 불이 붙는다. 시간이 지날 때마다 측정기를 확인한다."}},
+    {id:"d_comeas", l:"prayer", r:2, ev:"ev_cosus", shockAlways:1, d:"형준과 연통을 막고, 측정기로 기도실의 공기를 잰다", c:["a_cotest"], game:{type:"meter", 순서:1, 자리:["10분","30분","50분","70분","90분"], 값:["90","350","800","1,500","2,600"], 말:["이상 없음","가벼운 두통","심한 두통 · 기침","일어서지 못한다 · 문까지 못 간다","의식 없음"], 정답:4, 안내:"형준이 뒷골목에서 연통 끝을 막았다. 남은 장작에 불을 붙이고, 측정기 감지부를 강대상 옆에 둔 채 문을 닫았다. 문틈으로 뺀 줄 끝의 화면으로, 시간마다 수치를 읽는다."}},
     {id:"d_collarw", l:"prayer", r:2, p:"d_neck", d:"떨어진 칼라의 폭을 잰다", c:["p_collarw"]},
     {id:"d_candlehand", l:"prayer", r:2, d:"촛대의 피 자국을 다시 들여다본다", c:["p_candlehand"]},
     {id:"d_burn", l:"prayer", r:2, p:"d_stove", d:"난로 속 타다 만 장작을 꺼내 본다", c:["p_burn"]},
@@ -1213,7 +1206,7 @@ function 인물(o){window.__CHARS.push(o)}
  t:`교주의 주머니 속 열쇠꾸러미. 기도실 열쇠, 교주 방 열쇠, 그리고 손가락 한 마디만 한 놋쇠 열쇠. 기도실 문은 이 열쇠로 안에서 잠겨 있었다. 열쇠꾸러미는 탐정 보조가 맡아 두었다.`,
  f:[["교주의 시신","교주의 열쇠꾸러미에 작은 놋쇠 열쇠가 하나 있다. 기도실 안의 무언가를 여는 크기다."]]},
 {id:"p_stove", n:"꺼진 장작 난로", k:"amb",
- t:`난로 안에 장작 넷이 그대로다. 겉만 검게 그을렸다. 불은 숨을 쉬다가, 어느 순간 숨을 멈춘 것 같다. 난로 문 주위로 그을음이 짙다.`,
+ t:`난로 안에 장작 여섯 개가 그대로다. 겉만 검게 그을렸다. 불은 숨을 쉬다가, 어느 순간 숨을 멈춘 것 같다. 난로 문 주위로 그을음이 짙다.`,
  q:"이 난로에 장작은 누가 넣습니까?", to:"sungmin", why:"기도실 시중 안성민"},
 {id:"p_warn", re:"형준이 그 종이에서 눈을 돌린다.", n:"난로 옆 경고문", k:"amb", s:"hyungjun",
  t:`난로 옆 벽에 붙은 종이. 굵은 매직 글씨다. 누가 이 방의 숨구멍을 잘 알고 있었다.`,
@@ -1564,7 +1557,7 @@ function 인물(o){window.__CHARS.push(o)}
 {id:"a_dist", n:"뒷문 계단에서 연통까지", k:"case", img:"shadow",
  t:`뒷문 계단에서 연통까지 8m. 가로등은 계단 위에 하나뿐이고, 연통 쪽은 그늘이다. 계단에 앉은 사람은 연통 앞을 볼 수 있었다. 얼굴까지는 아니어도.`,
  f:[["수련원의 구조","뒷문 계단에서 연통까지 8m. 연통 쪽은 어둡다."]],
- q:"어젯밤 이 계단에 앉아 있었다면, 연통 쪽에서 무엇을 봤습니까?", to:"allen", why:"뒷문 밖에 있던 마앨런", qneedAny:["c_2348","h_butts","g_call"]},
+ q:"어젯밤 이 계단에 앉아 있었다면, 연통 쪽에서 무엇을 봤습니까?", to:"allen", why:"뒷문 밖에 있던 마앨런", qneed:["c_2348","h_butts"]},
 
 /* ───────────── 보일러실 (2차) ───────────── */
 {id:"b_panel", n:"보일러 제어판 기록", k:"amb", s:"hyungjun",
@@ -1617,9 +1610,9 @@ function 인물(o){window.__CHARS.push(o)}
  t:`03:02, 형준이 쌀포대를 들고 연통 앞에 섰을 때, 연통은 이미 검정 비닐로 씌워지고 파란 테이프가 칭칭 감겨 있었다. 형준은 숨이 턱 막혀 그대로 도망쳤다.`,
  tl:[["03:02","연통은 이미 검정 비닐과 파란 테이프로 막혀 있었다 (형준 목격)"]], sum:"03:02 연통은 이미 막혀 있었다. 형준의 쌀포대는 쓰이지 않았다"},
 {id:"wj_tk3", n:"원진의 증언 — 계단의 정모", k:"case", a:[["jeongmo","ok"]],
- t:`23:52 무렵, 복도에서 통화하던 원진 옆을 정모가 지나 2층 계단으로 뛰어 올라갔다. 2~3분 뒤 다시 뛰어 내려가 본관 쪽으로 나갔다. 손에 무언가 작은 수첩 같은 것을 쥐고 있었다.`,
- tl:[["23:52 무렵","정모가 별관 2층으로 올라갔다 (원진 목격)"],["23:55 무렵","정모가 무언가를 쥐고 내려와 본관으로 갔다"]],
- sum:"23:52 정모는 별관 계단에 있었다 — 뒷골목이 아니다"},
+ t:`23:51, 복도에서 통화하던 원진 옆을 정모가 지나 계단을 뛰어 올라갔다. 곧 2층 교역자숙소 쪽에서 문 여는 소리가 났다. 23:55 무렵 정모가 다시 뛰어 내려가 본관 쪽으로 나갔다. 손에 무언가 작은 수첩 같은 것을 쥐고 있었다.`,
+ tl:[["23:51 ~ 23:55","정모가 별관 2층 교역자숙소에 있었다 (원진 목격)"],["23:55 무렵","정모가 무언가를 쥐고 내려와 본관으로 갔다"]],
+ sum:"23:52 정모는 별관 2층 교역자숙소에 있었다 — 뒷골목이 아니다"},
 {id:"hj_tk2", n:"형준의 증언 — 21:35 문밖", k:"case", s:"sungmin",
  t:`21:35, 면담 중 교주가 전화를 받았다. ‘박 실장? 그래, 다섯 시 반이라고.’ 그때 반쯤 열린 문밖에 다과 쟁반을 든 성민이 서 있었다. 형준과 눈이 마주치자 성민은 쟁반을 내려놓지도 않고 돌아섰다.`,
  tl:[["21:35","성민이 사무실 문밖에서 교주의 통화를 들었다 (형준 목격)"]],
@@ -1732,8 +1725,8 @@ function 인물(o){window.__CHARS.push(o)}
 {id:"c_dust", n:"계단의 먼지", k:"case",
  t:`계단과 바닥에 먼지가 고르게 앉아 있다. 방금 내려온 탐정의 발자국 말고는 하나도 없다. 바닥 문 걸쇠는 위쪽에만 달려 있고, 녹슨 자물쇠 고리에는 손댄 자국이 없다. 몇 달은 열리지 않은 문이다.`,
  f:[["기도실의 규칙","기도실 바닥 문은 몇 달 동안 열린 적이 없다. 그날 밤 이 문으로 드나든 사람은 없다."]]},
-{id:"a_cotest", 충격:{누구:"hyungjun", 머리:"문이 닫혔다", 말:"마지막 숫자를 적는 순간, 등 뒤에서 기도실 문이 저절로 닫힌다. 귀가 먹먹해지고 머리가 지끈거린다. 손잡이가 멀다. 형준이 밖에서 문을 걷어차 연다. “나와요, 빨리!”"}, n:"연통 재현 측정", k:"case",
- t:`형준이 뒷골목에서 연통 끝을 비닐로 막고, 그날 밤 타다 남은 장작에 다시 불을 붙였다. 기도실 문을 열어 둔 채 들락거리며 측정기를 쟀다. 일산화탄소는 난로 문 틈으로 새어 나왔고, 숫자는 생각보다 빨리 올랐다.`,
+{id:"a_cotest", 충격:{누구:"hyungjun", 머리:"문이 닫혔다", 말:"위험 수치. 감지부를 거두러 문을 연 순간, 머리가 핑 돈다. 감지부를 집어 드는 사이 등 뒤에서 기도실 문이 저절로 닫힌다. 귀가 먹먹해지고 머리가 지끈거린다. 손잡이가 멀다. 형준이 밖에서 문을 걷어차 연다. “나와요, 빨리!”"}, n:"연통 재현 측정", k:"case",
+ t:`형준이 뒷골목에서 연통 끝을 비닐로 막고, 그날 밤 타다 남은 장작에 다시 불을 붙였다. 측정기의 감지부를 줄에 달아 강대상 옆에 두고, 줄은 문틈으로 뺐다. 그날 밤처럼 문을 닫은 채, 문밖에서 수치를 읽었다. 일산화탄소는 난로 문 틈으로 새어 나왔고, 숫자는 생각보다 빨리 올랐다.`,
  v:{type:"doc", org:"측 정 기 록", title:"일산화탄소 측정 · 빈 기도실, 연통 막음", lines:["새는 곳 — 난로 문 틈","막은 뒤 10분 — 90ppm · 이상 없음","30분 — 350ppm · 가벼운 두통","50분 — 800ppm · 심한 두통, 기침","70분 — 1,500ppm · 일어서지 못함. 문까지 못 감","90분 — 2,600ppm · 의식 없음","강대상 위의 초 — 58분째에 꺼짐"]},
  f:[["교주의 시신","연통이 막히면 난로 문 틈으로 일산화탄소가 샌다. 약 50분 뒤 두통과 기침, 약 70분 뒤에는 일어서지 못한다. (형준과 재현 측정)"]], sum:"연통을 막으면 50분 뒤 기침, 70분 뒤 거동 불가"},
 {id:"a_strip", 충격:{누구:"", 머리:"빛에 걸린 것", 말:"손전등 빛이 닿자 연통 받침 못 끝에서 무언가 하얗게 번쩍인다. 낮에는 보이지 않던 것이다."}, n:"연통 받침의 반사 실밥", k:"case", s:"jeongmo", s2:["wonjin","sungmin","woobin","taeyoung","allen"],
@@ -1915,7 +1908,7 @@ function 인물(o){window.__CHARS.push(o)}
     "교주의 휴대폰": `(웃음이 멎는다) Jesus… ‘너만 특별히 안수해 주마.’ LA에도 이런 문자 받은 사람들 있었어요. Dad가 그 사람들 데리고 나오려다 찍혔고요. …이게 제가 보낸 사진보다 훨씬 확실한 증거네요.`,
     "산기도원 이송 명단": `LA에도 이런 데 있어요. ‘수양관.’ 이름만 예쁘죠. Dad가 거기 사람들 빼내려다 미움받았어요.`,
     "미국지부 인수 계약서": [`아, 그거요. Dad가 다음 주에 서명하러 와요. 본부랑 하나가 되는 거죠. Great news, right?`, `Okay, 솔직히 말할게요. Dad가 평생 지킨 교회를 뺏는 계약이에요. 서명하면 Dad는 ‘고문’. 이름만 남는 거예요. Nice title, no power.`],
-    "CCTV — 23:48~23:56": { 답: `…Busted. 담배 피우러 나갔어요. 뒷문 계단에서. 여기 담배 금지잖아요. Dad랑 통화도 했고요. 그리고— 연통 쪽에 누가 있었어요. 웅크리고. 뭘 만지길래 관리자분인 줄 알았어요. 아, 걸쇠는 제가 나갈 때 이미 풀려 있었어요. Seriously.`, 새증거: "앨런의 증언 — 연통 앞 그림자", 알면: { "앨런의 증언 — 연통 앞 그림자": `네, 그 8분이 제가 계단에 있던 시간이에요. 이미 다 말씀드렸잖아요. 연통 앞 그 사람 얘기까지.` } },
+    "CCTV — 23:48~23:56": { 답: `…Busted. 잠깐 바람 쐬러 나갔어요. Dad랑 통화하느라고요. 어디서요? 그냥… 밖이요. 그게 다예요.`, 알면: { "앨런의 증언 — 연통 앞 그림자": `네, 그 8분이 제가 계단에 있던 시간이에요. 이미 다 말씀드렸잖아요. 연통 앞 그 사람 얘기까지.`, "뒷문 계단의 담배꽁초": { 답: `…꽁초까지 찾으셨구나. Okay. 뒷문 계단에서 피웠어요. 여기 담배 금지잖아요. Dad랑 통화하면서. 그리고— 연통 쪽에 누가 있었어요. 웅크리고. 뭘 만지길래 관리자분인 줄 알았어요. 아, 걸쇠는 제가 나갈 때 이미 풀려 있었어요. Seriously.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
     "뒷문 계단에서 연통까지": { 답: `계단이요? 저는 그 시간에 사무실에 있었다니까요. 세림 씨랑. 그다음엔 침대랑 jet lag랑.`, 알면: { "CCTV — 23:48~23:56": { 답: `…CCTV 보셨군요. Okay. 네, 여기 앉아 있었어요. 열한 시 오십 분쯤. 저 어둠 속에 누가 웅크리고 있었어요. 뭘 만지길래 관리인인 줄 알았죠. 그리고 제가 나올 때 걸쇠는 이미 풀려 있었어요. 누가 먼저 나갔다는 거예요.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
     "땅콩버터 병": [`제 아침이에요. 한국 빵은 너무 달아서. …알레르기요? Come on, 저는 그분 방 근처에도 안 갔어요.`, { 답: `얼굴 보셨잖아요. 부은 데 하나 없었죠? 알레르기면 그렇게 안 돼요. 그분 음식엔 손도 안 댔어요. Trust me.`, 알면: { "검안 메모": `부은 데 없었다면서요. See? 그냥 제 아침이었다니까요. Peanut butter is innocent.` } }],
     "앨런의 통화 기록": { 답: `Dad요. 칠 분. 사무실 밖 복도에서 했어요. 세림 씨 앞에서 하기 좀 그래서.`, 알면: { "CCTV — 23:48~23:56": `Dad요. 칠 분. …Okay, 복도 아니고 뒷문 계단. 담배 피우면서. Dad가 울었어요. 태어나서 처음 들었어요, Dad 우는 거.` } },
@@ -2583,9 +2576,11 @@ function 인물(o){window.__CHARS.push(o)}
   최종변론: [
     {
       힌트: `보조: 성민 씨가 나온 건 23:45예요. 그 직후, 기도실 벽 너머에서 무슨 소리가 녹음됐죠?`,
+      힌트2: `보조: 강대상 서랍 속 녹음기요. 23:45 바로 다음에 뭐가 녹음됐는지. 아니면 난로 속에 남은 장작이나, 형준 씨와 한 측정.`,
       변명: `저는 차만 드리고 나왔어요. 그때 아버지는 멀쩡하셨어요. 문 잠그는 소리도 들었어요.`,
       보증: [],
       증거: ["녹음 — 23:52 벽 너머", "난로 속 장작", "연통 재현 측정", "연통 끝의 테이프 자국"],
+      탐정별: {"녹음 — 23:52 벽 너머": "당신이 나온 지 7분 뒤, 23:52. 기도실 녹음기에 연통 쪽 벽 너머에서 테이프 뜯는 소리가 남았습니다. 교주가 안에서 문을 잠근 뒤, 누군가 밖에서 연통을 막았습니다.", "난로 속 장작": "난로 속 장작 여섯 개는 겉만 그을리고 속은 그대로였습니다. 넣고 10분 안팎에 배기가 막혔다는 뜻입니다. 그 장작을 넣은 건 당신입니다.", "연통 재현 측정": "연통을 막으면 50분 뒤 기침, 70분 뒤엔 일어서지 못합니다. 교주는 00:41에 기침했고 01:02에 쓰러졌습니다. 거꾸로 세면 연통이 막힌 건 23:50 무렵. 당신이 나오고 몇 분 뒤입니다.", "연통 끝의 테이프 자국": "연통 끝 둘레에 테이프 자국이 한 바퀴, 바닥엔 파란 테이프 부스러기. 누군가 밖에서 연통을 막았습니다. 안에서 문을 잠근 교주가 할 수 있는 일이 아닙니다. 그리고 그 일은 당신이 나온 직후에 벌어졌습니다."},
       탐정: `당신이 장작을 넣고 나온 지 7분 뒤, 23:52. 연통 쪽 벽 너머에서 테이프 뜯는 소리가 녹음됐습니다. 난로 속 장작도 같은 말을 합니다. 장작을 넣고 10분 안팎에 배기가 막혔습니다.`,
       반박: [],
       물러섬: `…그 시간엔 숙소로 가는 길이었어요.`,
@@ -2594,9 +2589,11 @@ function 인물(o){window.__CHARS.push(o)}
     },
     {
       힌트: `보조: 그 시간 별관 복도에 계속 있던 사람이 있었잖아요. 그 사람이 본 귀가 시각을 떠올려 봐요.`,
+      힌트2: `보조: 원진 씨한테 원진 씨 휴대폰 통화 기록을 물었을 때 들은 얘기요. 누가 몇 시에 1호실에 들어왔는지.`,
       변명: `숙소로 바로 갔어요. 기도실에서 나와서 곧장요.`,
       보증: [["jeongmo", `맞습니다. 제가 열한 시 오십 분쯤 별관을 지나는데 1호실 불이 켜져 있었어요. 성민이가 먼저 와 있었던 겁니다. 그렇지, 성민아?`]],
-      증거: ["원진의 증언 — 1호실 귀가 시각"],
+      증거: ["원진의 증언 — 1호실 귀가 시각", "원진의 증언 — 정모의 외출"],
+      탐정별: {"원진의 증언 — 정모의 외출": "원진 씨가 봤습니다. 자정 무렵, 당신이 정모 씨보다 먼저 1호실에 들어왔다고요. 기도실에서 1호실까지는 4분. 23:45에 나온 사람이 자정이 되어서야 들어왔습니다."},
       탐정: `기도실에서 1호실까지는 4분입니다. 당신은 23:45에 나왔고, 1호실에 들어간 건 00:03입니다. 18분이 걸렸습니다.`,
       반박: [
         ["wonjin", `아니 형, 그 불 내가 켜 두고 나온 거잖아. 방 비어 있었어. 성민 형제님 들어온 거 열두 시 삼 분이야. 누나가 ‘벌써 열두 시 삼 분이네’ 하던 그때. 나 그 복도에 계속 있었다니까?`],
@@ -2608,31 +2605,37 @@ function 인물(o){window.__CHARS.push(o)}
     },
     {
       힌트: `보조: 앨런 씨는 그 시각 뭘 하고 있었죠? 통화 기록, 그리고 녹음 속의 먼 영어 목소리.`,
-      변명: `밖에 있었던 건 저만이 아니잖아요. 앨런 형제님도 그 시간에 뒷문 밖에 있었어요.`,
+      힌트2: `보조: 손님방에서 본 앨런 씨 휴대폰, 아니면 뒷골목에서 잰 계단과 연통 사이 거리.`,
+      변명: `밖에 있었던 건 저만이 아니잖아요. 앨런 형제님도 그 시간에 뒷문 계단에 쪼그려 앉아서, 영어로 통화하고 있었어요.`,
       보증: [],
-      증거: ["앨런의 통화 기록", "뒷문 계단에서 연통까지", "녹음 — 23:52 벽 너머"],
-      탐정: `앨런 씨는 23:49부터 7분 동안 LA와 통화 중이었습니다. 녹음 속 영어 목소리는 테이프 소리보다 훨씬 희미합니다. 연통에서 8m 떨어진 계단, 가로등 아래에서 통화하던 목소리입니다. …그런데 성민 씨. 앨런 씨가 그 시각 뒷문 밖에 있었다는 걸 어떻게 압니까? 그건 그 자리에 있던 사람만 압니다.`,
+      증거: ["앨런의 통화 기록", "뒷문 계단에서 연통까지", "녹음 — 23:52 벽 너머", "앨런의 증언 — 연통 앞 그림자"],
+      탐정별: {"앨런의 통화 기록": "앨런 씨는 23:49부터 7분 동안 LA와 통화 중이었습니다. …그런데 성민 씨. 앨런 씨가 ‘뒷문 계단’에서 ‘영어로’ 통화했다는 건 어떻게 압니까? 통화 기록엔 시각만 남고, 어디서 했는지는 없습니다. 그 자리를 앨런 씨는 저에게만 털어놓았습니다.", "뒷문 계단에서 연통까지": "뒷문 계단에서 연통까지 8미터. 계단엔 가로등이 있고, 연통 쪽은 어둡습니다. 밝은 데 있던 사람은 보이고, 어둠 속에 웅크린 사람은 보이지 않습니다. …성민 씨, 앨런 씨가 그 계단에서 ‘영어로’ 통화했다는 건 어떻게 압니까? 그 계단이 보이는 어둠 속에 있던 사람이 아니라면요.", "녹음 — 23:52 벽 너머": "23:52의 녹음. 테이프 뜯는 소리는 가깝고, 영어 목소리는 아주 멀리서 희미합니다. 테이프를 뜯은 사람과 통화하던 사람은 다른 사람입니다. …그런데 그 먼 목소리가 ‘뒷문 계단’의 앨런 씨라는 건 어떻게 알았습니까? 그 자리에 있지 않았다면요.", "앨런의 증언 — 연통 앞 그림자": "앨런 씨는 가로등 밑 계단에서 통화하다, 연통 쪽 어둠 속에 웅크린 사람을 봤습니다. 그 사람은 앨런 씨가 아닙니다. …그리고 성민 씨, 앨런 씨가 그 계단에서 ‘영어로’ 통화했다는 건 앨런 씨가 저에게만 한 얘기입니다. 당신은 그걸 어떻게 압니까?"},
+      탐정: `앨런 씨는 23:49부터 7분 동안 LA와 통화 중이었습니다. 녹음 속 영어 목소리는 테이프 소리보다 훨씬 희미합니다. 연통에서 8m 떨어진 계단, 가로등 아래의 목소리입니다. …그런데 성민 씨. 앨런 씨가 ‘뒷문 계단’에서 ‘영어로’ 통화했다는 건 어떻게 압니까? 사무실 CCTV에는 문을 나서는 모습뿐이고, 통화 기록에는 시각만 남습니다. 그 자리를 앨런 씨는 저에게만 털어놓았습니다. 그 계단이 보이는 곳에 있던 사람이 아니라면, 알 수 없는 일입니다.`,
       반박: [["allen", `I was on the phone the whole time. 그리고 그 사람… 웅크리고 있던 그 사람은 저를 봤을 거예요. 저는 가로등 바로 밑에 있었으니까.`]],
-      물러섬: `…다들 얘기하던데요. 누가 그러던데요.`,
+      물러섬: `…다들 얘기하던데요. 누가 그러던데요. …누가요? 그건… 기억이 안 나요.`,
       장면: `23:52, 앨런은 계단에서 통화 중이었다 — 그리고 성민은 그걸 알고 있었다.`,
-      설명: `앨런을 끌어들인 변명을 통화 기록과 녹음 속 먼 목소리로 깼다. 앨런이 그 시각 뒷문 밖에 있었다는 사실은, 연통 앞에 있던 사람만 알 수 있었다.`
+      설명: `앨런을 끌어들인 변명을 통화 기록과 녹음 속 먼 목소리로 깼다. 그리고 앨런이 ‘뒷문 계단’에서 ‘영어로’ 통화했다는 건 CCTV에도 통화 기록에도 없고, 앨런이 탐정에게만 털어놓은 사실이었다. 성민이 그걸 안다는 건, 그 계단이 보이는 연통 앞에 있었다는 뜻이다.`
     },
     {
       힌트: `보조: 형준 씨가 보일러실에 있었다는 기록이 있어요. 그리고 연통 앞 그 사람의 소매에서 번쩍인 것.`,
+      힌트2: `보조: 보일러실 제어판의 상세 화면이요. 아니면 연통 받침 못에 걸려 있던 것.`,
       변명: `연통은 관리자분 구역이잖아요. 그 시간에 밖에서 뭘 만지는 사람이 있었다면 관리자분이에요.`,
       보증: [],
-      증거: ["제어판 상세 기록", "앨런의 증언 — 반사띠", "관리인 점퍼", "연통 받침의 반사 실밥", "수련회 단체 패딩", "앨런의 증언 — 연통 앞 그림자"],
+      증거: ["제어판 상세 기록", "앨런의 증언 — 반사띠", "연통 받침의 반사 실밥"],
+      탐정별: {"제어판 상세 기록": "23:47, 23:51, 23:55. 형준 씨는 보일러실 안에서만 누를 수 있는 재점화 버튼을 4분마다 눌렀습니다. 보일러실에서 뒷골목까지는 5분. 23:52에 연통 앞에 있을 수 없습니다.", "앨런의 증언 — 반사띠": "앨런 씨가 본 그 사람의 소매에서 반사띠가 번쩍였습니다. 반사띠는 수련회 단체 패딩에만 있습니다. 형준 씨는 그 패딩을 받지 않았습니다.", "연통 받침의 반사 실밥": "연통 받침 못 끝에 반사 원단 실밥이 걸려 있었습니다. 반사띠는 수련회 단체 패딩에만 있고, 형준 씨는 그 패딩을 받지 않았습니다. 연통 앞에 웅크렸던 사람은 그 패딩을 입고 있었습니다."},
       탐정: `23:47, 23:51, 23:55. 형준 씨는 보일러실 안에서만 누를 수 있는 재점화 버튼을 4분마다 눌렀습니다. 그리고 앨런 씨가 연통 앞에서 본 사람의 소매에는 반사띠가 번쩍였습니다. 관리인 점퍼에는 반사띠가 없습니다.`,
       반박: [["hyungjun", `그 시간에 난 보일러실에서 버너 세 번 다시 켰다. 영하 15도였어. 그리고 내 점퍼엔 반사띠 같은 거 없어. 그건… 너희 단체 패딩에나 붙어 있지.`]],
       물러섬: `…그 패딩은 여섯 명이 입어요.`,
       장면: `23:51, 형준은 보일러실에 있었다 — 연통 앞의 소매에는 반사띠.`,
-      설명: `같은 방법을 준비했던 형준은 23:51 보일러실에서 버너를 다시 켜고 있었다. 연통 앞 그림자의 소매에서 번쩍인 반사띠는 단체 패딩에만 있다. 패딩을 입는 여섯 중 정모는 별관 계단에, 원진은 별관 복도에, 우빈과 태영은 찬양팀실에, 앨런은 계단에서 통화 중이었다.`
+      설명: `같은 방법을 준비했던 형준은 23:51 보일러실에서 버너를 다시 켜고 있었다. 연통 앞 그림자의 소매에서 번쩍인 반사띠는 단체 패딩에만 있다. 패딩을 입는 여섯 중 정모는 별관 2층 교역자숙소에, 원진은 별관 복도에, 우빈과 태영은 찬양팀실에, 앨런은 계단에서 통화 중이었다.`
     },
     {
       힌트: `보조: 새벽예배 준비로 네 시 반에 일어난 사람이 있었어요. 같은 방에서.`,
+      힌트2: `보조: 기도실 녹음기의 맨 마지막 기록, 04:45. 아니면 단톡방 공지를 원진 씨한테 물었을 때 들은 얘기.`,
       변명: `그 뒤로는 밤새 방에 있었어요. 한 번도 안 나갔어요.`,
       보증: [["jeongmo", `성민이는 밤새 저와 같이 있었습니다. 제가 보증합니다. …성민아, 괜찮아.`]],
       증거: ["원진의 증언 — 빈 침대", "녹음 — 04:45 마지막"],
+      탐정별: {"녹음 — 04:45 마지막": "04:45, 누군가 연통의 봉투를 뜯어 갔습니다. 연통을 막은 사람이 아니면 그 봉투를 치울 이유가 없습니다. 23:52에 막은 사람이 당신이라면, 04:45에 다시 그 앞에 간 사람도 당신입니다. 그 시각, 방에 있었다는 말은 성립하지 않습니다."},
       탐정: `04:38부터 04:55까지, 당신의 침대는 비어 있었습니다. 그 시각 정모 씨는 자고 있었고요.`,
       반박: [
         ["wonjin", `형, 형 그때 자고 있었어. 나 예배 준비 때문에 네 시 반에 일어났어. 사십 분쯤 성민 형제님이 살금살금 나가더라. 오십오 분에 들어왔는데 탄 냄새가 났어. 그때도 이상하다고 생각했다니까.`],
@@ -2644,9 +2647,11 @@ function 인물(o){window.__CHARS.push(o)}
     },
     {
       힌트: `보조: 기도실에 들어갈 때 외투는 어떻게 하죠? 그리고 소각로에서 반쯤 녹은 채 나온 것.`,
+      힌트2: `보조: 기도실 문 옆 외투걸이요. 아니면 소각로 안에서 반쯤 녹은 채 나온 것.`,
       변명: `패딩은… 장작 넣다가 그을린 거예요. 저는 매일 밤 난로 앞에 있으니까요.`,
       보증: [["jeongmo", `맞습니다. 성민이는 매일 밤 난로 앞에 있었어요.`]],
-      증거: ["기도실 수칙", "문 옆 외투걸이", "소각로의 타다 남은 비닐", "기도실 시중 카트", "시중 업무표"],
+      증거: ["기도실 수칙", "문 옆 외투걸이", "소각로의 타다 남은 비닐", "기도실 시중 카트"],
+      탐정별: {"기도실 수칙": "기도실 수칙 첫 줄. ‘외투를 벗고 들어오십시오.’ 당신이 십 년 동안 매일 밤 지키던 규칙입니다. 난로 앞에서 패딩이 그을릴 일은 없습니다.", "문 옆 외투걸이": "기도실 문 옆 외투걸이. ‘외투는 벗고 들어올 것.’ 시중의 외투는 늘 이 문밖에 걸렸습니다. 당신이 패딩을 입은 채 난로 앞에 설 일은 없었습니다.", "소각로의 타다 남은 비닐": "소각로 재 위에서 반쯤 녹은 검정 봉투가 나왔습니다. 파란 테이프 조각이 엉겨 붙은 채로요. 당신 소매에 붙은 건 그을음이 아니라, 그 봉투와 같은 녹은 검정 비닐입니다.", "기도실 시중 카트": "시중 카트의 비품 목록엔 ‘봉투 10장’. 그런데 묶음엔 아홉 장뿐입니다. 사라진 한 장. 당신 소매에 녹아 붙은 그 검정 비닐입니다."},
       탐정: `기도실에는 외투를 벗고 들어갑니다. 당신이 십 년 동안 매일 밤 지키던 규칙입니다. 그리고 당신 소매에 붙은 건 그을음이 아니라 녹은 검정 비닐입니다. 소각로에서 반쯤 녹은 채 나온 그 봉투. 시중 카트에서 사라진 한 장입니다.`,
       반박: [],
       물러섬: null,
@@ -2759,7 +2764,7 @@ CHARS.forEach(o=>{
   Object.entries(o.증거반박||{}).forEach(([n,v])=>{const id=rid(n,W+" · 증거반박");if(id)FZC[id+"|"+o.id]=v});
   if(o.감싸기&&o.감싸기.대상)CUT[o.감싸기.대상]={by:o.id,t1:o.감싸기.일차,t2:o.감싸기.이차||o.감싸기.일차};
   if(o.id===CUL){
-    CH=(o.최종변론||[]).map((x,i)=>({hint:x.힌트||"",say:x.변명,back:x.보증||[],ok:(x.증거||[]).map(n=>rid(n,`${W} · 최종변론 ${i+1}`)).filter(Boolean),det:x.탐정,after:x.반박||[],win:x.물러섬||null,why:x.장면||"",use:x.설명||""}));
+    CH=(o.최종변론||[]).map((x,i)=>({detBy:Object.fromEntries(Object.entries(x.탐정별||{}).map(([n,t])=>[rid(n,`${W} · 탐정별 ${i+1}`),t]).filter(e=>e[0])),hint:x.힌트||"",hint2:x.힌트2||"",say:x.변명,back:x.보증||[],ok:(x.증거||[]).map(n=>rid(n,`${W} · 최종변론 ${i+1}`)).filter(Boolean),det:x.탐정,after:x.반박||[],win:x.물러섬||null,why:x.장면||"",use:x.설명||""}));
     if(o.헛짚음&&o.헛짚음.length)MISS=o.헛짚음;
   }
 });
@@ -2840,7 +2845,7 @@ const sayAs=(who,text)=>who==="me"?bubble(PM[CUL]||P[0],text,true):bubble(PM[who
 /* ===== 추궁 ===== */
 function resolveAns(a){
   if(Array.isArray(a))a=a[Math.min(round(),a.length)-1];
-  if(a&&typeof a==="object"){const w=(a.w||[]).find(x=>has(x[0]));return {t:w?w[1]:a.t,g:w?w[2]:a.g,g2:w?null:a.g2,own:w?w[3]:a.own};}
+  if(a&&typeof a==="object"){const w=(a.w||[]).find(x=>has(x[0])&&(!CM[x[0]].u||S.attr[x[0]]));return {t:w?w[1]:a.t,g:w?w[2]:a.g,g2:w?null:a.g2,own:w?w[3]:a.own};}
   return {t:a};
 }
 const ownLine=(c,who)=>c.nn?OWNN[who](c.nn):rnd(VOICE[who].own);
@@ -2892,10 +2897,11 @@ function qaBlock(id,compact){
   let show=log;
   if(compact&&!to&&S.lastWho&&S.lastWho[id]){const lw=S.lastWho[id];show=log.filter(x=>x[0]===lw&&!x[4]).slice(-1);}
   if(show.length)h+=`<div class="qa">${show.map(([w,t,y,g,r,_R,m])=>`${!r?`<div class="q">${to?esc(PM[to].name)+"에게: ":""}${esc(qOf(c))}</div>`:""}<div class="a ${y?"yes":""} ${g?"gave":""} ${r?"rb":""} ${m?"unmask":""}">${m?`<span class="mkst">가면이 벗겨졌다 · 앞서 들은 대답을 다시 물어볼 수 있다</span>`:""}<b>${esc(PM[w].name)}${r?" · 끼어든다":""}</b>${esc(t)}${y?"<i style=\"color:#2c5d9a\">→ 주인 확인</i>":""}${g?`<i>→ 새 진술: ${esc(CM[g].n)}</i>`:""}</div>`).join("")}</div>`;
-  const R=round(),askedNow=w=>log.some(x=>x[0]===w&&!x[4]&&x[5]===R&&!(x[7]&&!masked(w)));
+  const newInfo=w=>{const an=c.ans&&c.ans[w];if(an===undefined||(c.u&&w===c.u.o&&!S.attr[id]))return false;const r=resolveAns(an);return !!(r.g&&!has(r.g))||(r.g2||[]).some(x=>!has(x));};
+  const R=round(),askedNow=w=>!newInfo(w)&&log.some(x=>x[0]===w&&!x[4]&&x[5]===R&&!(x[7]&&!masked(w)));
   if(to&&(altOn(c)||!(c.u&&!S.attr[id]))){
     const changes=Array.isArray(c.ans&&c.ans[to])||(c.rb&&Array.isArray(c.rb.t));
-    const asked=askedNow(to)||(R===2&&!changes&&log.some(x=>x[0]===to&&!x[4]&&!(x[7]&&!masked(to))));
+    const asked=!newInfo(to)&&(askedNow(to)||(R===2&&!changes&&log.some(x=>x[0]===to&&!x[4]&&!(x[7]&&!masked(to)))));
     if(S.phase!=="end"&&!asked)h+=`<button class="ask" data-askwho="${to}" data-askid="${id}">${esc((altOn(c)?c.toAlt.why:c.why)||PM[to].name)}에게 묻는다 — ${esc(qOf(c))}</button>`;
     return h;
   }
@@ -3004,7 +3010,7 @@ function invView(R){
    <button class="primary" data-preacc>${R===1?"용의자 지목으로":"최종 지목으로"}</button>
    ${S.preAcc?`<div class="pop-ov" data-preov><div class="pop" role="dialog" aria-label="지목 전 확인">
      <span class="eyebrow">${R===1?"용의자 지목":"최종 지목"} 전에</span><h2>탐정 노트를 확인했습니까?</h2>
-     <p class="hint">알리바이가 무너진 사람, 의심 증거가 몰린 사람, 아직 주인을 모르는 증거를 다시 살펴본다. 찾은 증거 ${S.found.length}개.</p>
+     <p class="hint">알리바이가 무너진 사람, 의심 증거가 몰린 사람, 아직 주인을 모르는 증거를 다시 살펴본다. 찾은 증거 ${S.found.length}개.${(()=>{const n=A.filter(a=>a.r===R&&!did(a.id)&&actVisible(a)&&!a.lock).length;return n?` 이번 조사에서 아직 손대지 않은 곳이 <b>${n}곳</b> 남아 있다.`:" 이번 조사에서 볼 수 있는 곳은 모두 살폈다."})()}</p>
      <div class="row2"><button class="ghost" data-prenb>탐정 노트 열기</button><button class="primary" data-go="${R===1?"acc1":"acc2"}">지목하러 간다</button></div></div></div>`:""}`;
 }
 function shockHTML(c){const z=c.충격,p=PM[z.누구];
@@ -3030,7 +3036,7 @@ const lvNote=c=>{const l=lvOf(c);return l?`<p class="lvnote">${esc(c.lvx||LVN[l]
 const pinB=id=>`<button class="pin ${(S.pin||{})[id]?"on":""}" data-pin="${id}" aria-label="중요 표시">${(S.pin||{})[id]?"★":"☆"}</button>`;
 function clueCard(c){
   const tg=tagsOf(c);
-  return `<div class="card"><span class="cn tl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</span>${viewHTML(c)}<p class="${c.v?"memo":""}">${tShort(c.t)}</p>${reactHTML(c)}${clImg(c)}${lvNote(c)}${tg.length?`<div class="tags">${tg.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}${qaBlock(c.id,true)}</div>`;
+  return `<div class="card"><span class="cn ttl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</span>${viewHTML(c)}<p class="${c.v?"memo":""}">${tShort(c.t)}</p>${reactHTML(c)}${clImg(c)}${lvNote(c)}${tg.length?`<div class="tags">${tg.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}${qaBlock(c.id,true)}</div>`;
 }
 function lockBox(k){
   const v=LOCKS[k];
@@ -3145,7 +3151,7 @@ function confirmAcc(R){
     S.flash=F[id]||fill(F.기본||"{이름}{을/를} 범인으로 확정하기엔 증거가 부족하다. 수사를 계속한다.",{이름:PM[id].name});
     S.defShown=false;save();render();return;
   }
-  S.accused=id;S.fz=0;S.fzLog=[];S.fzIds=[];S.fzPU={};S.chUsed=[];S.ch=0;S.strikes=0;S.chPrev=[];S.chTries=[];S.chPick=null;S.showTruth=false;S.ending=null;go("final");
+  S.accused=id;S.fz=0;S.fzLog=[];S.fzIds=[];S.fzPU={};S.chUsed=[];S.ch=0;S.strikes=0;S.chPrev=[];S.chTries=[];S.chMiss=0;S.chPick=null;S.showTruth=false;S.ending=null;go("final");
 }
 
 /* ===== 결정적 증거 ===== */
@@ -3168,11 +3174,11 @@ function finalView(){
   }
   const ch=CH[S.ch],lastQ=S.ch===CH.length-1;
   const LIVES=K.추궁기회||5,hearts="●".repeat(Math.max(0,LIVES-S.strikes))+"○".repeat(Math.min(S.strikes,LIVES));
-  const sb=list=>list.map(([w,t])=>sayAs(w,t)).join("");
+  const sb=(list,mk)=>list.map(([w,t],i)=>(i===mk?'<span class="fmark"></span>':"")+sayAs(w,t)).join("");const FM=S.fMark||{};
   return `<h2>결정적 증거</h2>
    <p class="hint">${esc(K.최종안내||"변명마다 그것을 깨는 증거를 제시한다.")}</p>
    <div class="budget">추궁 기회 <span class="hearts">${hearts}</span><span style="flex:1"></span><span>변명 ${S.ch+1} / ${CH.length}</span></div>
-   <div class="says fsays" id="fsays">${sb(S.chPrev)}${sayAs(CUL,ch.say)}${sb(ch.back)}${sb(S.chTries)}${S.chTries.length&&ch.hint?`<p class="aidehint">${esc(ch.hint)}</p>`:""}</div>
+   <div class="says fsays" id="fsays">${sb(S.chPrev,FM.w==="prev"?FM.i:-1)}${sayAs(CUL,ch.say)}${sb(ch.back)}${sb(S.chTries,FM.w==="tries"?FM.i:-1)}${S.chTries.length&&ch.hint?`<p class="aidehint">${esc((S.chMiss||0)>=2&&ch.hint2?ch.hint2:ch.hint)}</p>`:""}</div>
    <h3>반박할 증거를 고른다</h3>
    <div class="evlist">${evList(CUL)}</div>
    <div class="row2 stick"><button class="ghost" data-noev>${lastQ?"증거 없이 몰아붙인다 (기회 -1)":"이 변명은 넘어간다 (기회 -1)"}</button><button class="primary" data-present ${S.chPick?"":"disabled"}>이 증거를 제시</button></div>`;
@@ -3190,13 +3196,13 @@ function present(id){
   if(id&&ch.ok.includes(id)){
     S.chUsed[S.ch]=id;
     if(!ch.win){S.ending="true";go("end");return;}
-    S.chPrev=[[CUL,ch.say],...ch.back,["me","["+CM[id].n+"] "+ch.det],...ch.after,[CUL,ch.win]];S.chTries=[];S.ch++;S.chPick=null;S.fScroll=1;save();render();return;
+    S.chPrev=[[CUL,ch.say],...ch.back,["me","["+CM[id].n+"] "+((ch.detBy||{})[id]||ch.det)],...ch.after,[CUL,ch.win]];S.fMark={w:"prev",i:1+ch.back.length};S.chTries=[];S.chMiss=0;S.ch++;S.chPick=null;S.fScroll=1;save();render();return;
   }
   S.strikes++;S.chPick=null;
   if(S.strikes>=(K.추궁기회||5)){S.ending="escape";go("end");return;}
-  if(!id&&S.ch<CH.length-1){S.chPrev=[[CUL,ch.say],...ch.back,["me","이 건은 보류하겠습니다. 다음 질문으로 넘어가죠."],[CUL,"…네."]];S.chTries=[];S.ch++;S.fScroll=1;save();render();return;}
-  S.chTries=S.chTries.concat([["me",id?"["+CM[id].n+"] 이 증거를 보십시오.":"당신이 범인입니다. 인정하십시오."],[CUL,MISS[Math.min(S.strikes-1,MISS.length-1)]]]).slice(-4);
-  S.fScroll=1;save();render();
+  if(!id&&S.ch<CH.length-1){S.chPrev=[[CUL,ch.say],...ch.back,["me","이 건은 보류하겠습니다. 다음 질문으로 넘어가죠."],[CUL,"…네."]];S.fMark={w:"prev",i:1+ch.back.length};S.chTries=[];S.chMiss=0;S.ch++;S.fScroll=1;save();render();return;}
+  S.chMiss=(S.chMiss||0)+1;S.chTries=S.chTries.concat([["me",id?"["+CM[id].n+"] 이 증거를 보십시오.":"당신이 범인입니다. 인정하십시오."],[CUL,MISS[Math.min(S.strikes-1,MISS.length-1)]]]).slice(-4);
+  S.fMark={w:"tries",i:S.chTries.length-2};S.fScroll=1;save();render();
 }
 
 /* ===== 엔딩 ===== */
@@ -3235,9 +3241,9 @@ function saidBy(c,who){
   if(!log.length)return `<div class="qa"><div class="q">${esc(qOf(c))}</div><div class="a"><b>${esc(PM[who].name)}</b><span style="color:var(--muted)">아직 묻지 않았다.</span></div></div>${S.phase!=="end"?`<button class="ask" data-askwho="${who}" data-askid="${c.id}">${esc(PM[who].name)}에게 묻는다</button>`:""}`;
   return `<div class="qa"><div class="q">${esc(qOf(c))}</div>${log.map(([w,t,y,g,r])=>`<div class="a ${y?"yes":""} ${r?"rb":""}"><b>${esc(PM[w].name)}${r?" · 끼어든다":""}</b>${esc(t)}</div>`).join("")}</div>`;
 }
-const NTABS=[["case","사건 개요"],["fact","알게 된 사실"],["alibi","알리바이"],["sus","의심 증거"],["unk","주인 모를 증거"],["all","전체 단서"]];
+const NTABS=[["case","사건 개요"],["fact","알게 된 사실"],["time","시간표"],["alibi","알리바이"],["sus","의심 증거"],["unk","주인 모를 증거"],["all","전체 단서"]];
 function noteClue(c){
-  return `<div class="ncard"><h4 class="tl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</h4>${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${qaBlock(c.id)}</div>`;
+  return `<div class="ncard"><h4 class="ttl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</h4>${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${qaBlock(c.id)}</div>`;
 }
 const gwa=w=>{const c=w.charCodeAt(w.length-1)-0xAC00;return c>=0&&c%28?"과":"와";};
 function moHTML(m){
@@ -3247,7 +3253,7 @@ function moHTML(m){
   const rel=S.found.map(id=>CM[id]).filter(c=>c&&(c.s===m.누구||(c.s2||[]).includes(m.누구)||S.attr[c.id]===m.누구||(c.a||[]).some(a=>a[0]===m.누구)||c.to===m.누구));
   const list=(S.moAll?S.found.map(id=>CM[id]).filter(Boolean):rel).sort((a,b)=>a.n.localeCompare(b.n,"ko"));
   return `<div class="mo"><p class="moq"><u>“${esc(m.말)}”</u></p><button class="ghost sm" data-moopen="${m.i}">${open?"닫기":"이 말에 증거를 내민다"}</button>
-   ${open?`<p class="mohint">${S.moAll?"찾은 증거 전체":`${esc(PM[m.누구].name)}${gwa(PM[m.누구].name)} 관련된 증거`} 중에서 이 말과 맞지 않는 것을 고른다.</p><div class="molist">${list.map(c=>`<button class="mopick" data-mopick="${m.i}" data-mid="${c.id}">${esc(c.n)}</button>`).join("")||`<span class="mohint">아직 관련 증거가 없다.</span>`}</div><button class="molink" data-moall>${S.moAll?"관련 증거만 보기":"전체 증거에서 고르기"}</button>${S.moErr===m.i?`<p class="err">이 말과는 맞지 않는다. 다른 증거를 찾아보자.</p>`:""}`:""}</div>`;
+   ${open?`<p class="mohint">${S.moAll?"찾은 증거 전체":`${esc(PM[m.누구].name)}${gwa(PM[m.누구].name)} 관련된 증거`} 중에서 이 말과 맞지 않는 것을 고른다.</p><div class="molist">${list.map(c=>`<button class="mopick" data-mopick="${m.i}" data-mid="${c.id}">${esc(c.n)}</button>`).join("")||`<span class="mohint">아직 관련 증거가 없다.</span>`}</div><button class="molink" data-moall>${S.moAll?"관련 증거만 보기":"전체 증거에서 고르기"}</button>${S.moErr===m.i?`<p class="err">이 말과는 맞지 않는다. 다른 증거를 찾아보자.</p>${m.힌트?`<p class="aidehint">${esc(m.힌트)}</p>`:""}`:""}`:""}</div>`;
 }
 function renderNote(){
   $("overlay").hidden=!S.nb;if(!S.nb)return;
@@ -3263,14 +3269,19 @@ function renderNote(){
       <h4>사망 추정 시간</h4><p><b>${esc(K.노트사망추정||"")}</b></p><ul>${(K.노트목격||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
       <h4>수사 현황</h4><p>${round()}차 현장 검증 · 찾은 증거 ${S.found.length}개</p>
     </div>`;
-  }else if(S.ntab==="fact"){
+  }else if(S.ntab==="fact"||S.ntab==="time"){
     const cats=K.사실분류||[];const by={};const tl=[];
     S.found.forEach(id=>{const c=CM[id];(c.f||[]).forEach(([k,t])=>{(by[k]=by[k]||[]);if(!by[k].includes(t))by[k].push(t)});(c.tl||[]).forEach(([t,x])=>tl.push([t,x,c.n]))});
+    if(S.ntab==="fact"){
     const order=cats.concat(Object.keys(by).filter(k=>!cats.includes(k)));
     const parts=order.filter(k=>by[k]).map(k=>`<div class="ncard fact"><h4>${esc(k)}</h4><ul>${by[k].map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>`).join("");
+    h=(parts||`<div class="nempty">아직 알게 된 사실이 없다.</div>`)+`<p class="claim">시각이 적힌 기록은 ‘시간표’ 탭에 순서대로 모인다.</p>`;
+    }else{
     tl.sort((a,b)=>tmin(a[0])-tmin(b[0]));
-    const seen=new Set();const tlh=tl.filter(([t,x])=>{const k=t+x;if(seen.has(k))return false;seen.add(k);return true}).map(([t,x,n])=>`<div><b>${esc(t)}</b><span>${esc(x)}</span></div>`).join("");
-    h=(parts||`<div class="nempty">아직 알게 된 사실이 없다.</div>`)+`<div class="ncard fact"><h4>시간표</h4>${tlh?`<div class="tl">${tlh}</div>`:`<p class="claim">녹음, 기록, 증언에서 확인된 시각이 여기에 쌓인다.</p>`}</div>`;
+    const seen=new Set();let sec="";const SEC=t=>{const m=tmin(t);return m<24*60?"수련회 첫날 밤 · 자정 전":m<27*60?"자정 ~ 새벽 3시":"새벽 3시 이후"};
+    const tlh=tl.filter(([t,x])=>{const k=t+x;if(seen.has(k))return false;seen.add(k);return true}).map(([t,x,n])=>{const s=SEC(t);const hd=s!==sec?`<div class="tlh">${esc(s)}</div>`:"";sec=s;return hd+`<div><b>${esc(t)}</b><span>${esc(x)}<small>${esc(n)}</small></span></div>`}).join("");
+    h=`<div class="ncard fact"><h4>시간표</h4><p class="claim">녹음, 기록, 증언으로 확인된 시각만 순서대로 쌓인다.</p>${tlh?`<div class="tl">${tlh}</div>`:`<p class="claim">아직 확인된 시각이 없다.</p>`}</div>`;
+    }
   }else if(S.ntab==="alibi"){
     const ref=(K.알리바이기준||[]).filter(e=>(!e.r||e.r===round())&&(!e.need||has(e.need)));
     h=(ref.length?`<div class="ncard refbox">${ref.map(e=>`<div><span>${esc(e.k)}</span><b>${esc(e.t)}</b></div>`).join("")}</div>`:"")+P.map(p=>{
@@ -3290,7 +3301,7 @@ function renderNote(){
     const by={};
     S.found.forEach(id=>{const c=CM[id];if(ukOpen(c)||clrd(c))return;const qd=c.q?((S.qa||{})[id]||[]).length>0:!(c.s2&&c.s2.length);[...(qd?susOf(c):[]),S.attr[id]].filter(Boolean).forEach(w=>{(by[w]=by[w]||[]);if(!by[w].includes(c))by[w].push(c)})});
     const ids=P.map(p=>p.id).filter(id=>by[id]);
-    const susItem=(id,c)=>`<details class="ncard fold" data-fold="${id}:${c.id}" ${S.fold&&S.fold[id+":"+c.id]?"open":""}><summary><span class="tl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</span></summary><div class="fb">${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${saidBy(c,id)}</div></details>`;
+    const susItem=(id,c)=>`<details class="ncard fold" data-fold="${id}:${c.id}" ${S.fold&&S.fold[id+":"+c.id]?"open":""}><summary><span class="ttl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</span></summary><div class="fb">${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${saidBy(c,id)}</div></details>`;
     h=ids.length?ids.map(id=>{const mo=by[id].filter(c=>c.k==="motive"),ot=by[id].filter(c=>c.k!=="motive");return `<div class="nsec"><h4>${esc(PM[id].name)}</h4>${mo.length?`<div class="subh">살해 동기</div>${mo.map(c=>susItem(id,c)).join("")}`:""}${ot.length?`<div class="subh">사건과 정황</div>${ot.map(c=>susItem(id,c)).join("")}`:""}</div>`}).join(""):`<div class="nempty">아직 누군가를 가리키는 증거가 없다.</div>`;
   }else if(S.ntab==="unk"){
     h=`<p class="claim">누구 것인지 모르는 증거. 용의자에게 들고 가서 물어볼 수 있다. 주인이 인정하면 ‘의심 증거’로 옮겨진다.</p>`+(unk.length?unk.map(id=>S.nbFound&&S.nbFound[0]===id?`<div class="ncard found" id="nbfound"><h4>${esc(CM[id].n)}</h4><p>${esc(CM[id].t)}</p>${qaBlock(id)}<div class="foundbar">증거의 주인을 찾았다!<b>「${esc(CM[id].n)}」의 주인은 ${esc(PM[S.nbFound[1]].name)}.</b><small>‘의심 증거’의 ${esc(PM[S.nbFound[1]].name)} 칸으로 옮긴다.</small></div></div>`:noteClue(CM[id])).join(""):`<div class="nempty">주인을 모르는 증거가 없다.</div>`);
@@ -3580,7 +3591,7 @@ function bind(v){
   v.querySelectorAll("[data-go2]").forEach(x=>x.onclick=()=>{S.loc=K.둘째장소||S.loc;S.sub=null;if(S.cause&&S.cause.ok&&CAUSE&&CAUSE.cid&&!has(CAUSE.cid))S.found.push(CAUSE.cid);sfx("tape");go("inv2");});
   v.querySelectorAll("[data-cause]").forEach(x=>x.onclick=()=>{const i=+x.dataset.cause,ok=CAUSE.보기[i]===CAUSE.정답;S.cause={i,ok};if(ok){S.bonus=S.bonus||{};S.bonus[2]=(CAUSE.보너스||0);}save();render();});
   v.querySelectorAll("[data-cfnext]").forEach(x=>x.onclick=()=>{S.cfi=(S.cfi||1)+1;save();render();});
-  {const cs=v.querySelector("#cfsays");if(cs)cs.scrollTop=cs.scrollHeight;const fs=v.querySelector("#fsays");if(fs){fs.scrollTop=fs.scrollHeight;if(S.fScroll){S.fScroll=0;setTimeout(()=>{const r=fs.getBoundingClientRect();window.scrollBy({top:r.bottom-innerHeight*0.55,behavior:"smooth"});},30);}}}
+  {const cs=v.querySelector("#cfsays");if(cs)cs.scrollTop=cs.scrollHeight;const fs=v.querySelector("#fsays");if(fs){const mk=fs.querySelector(".fmark");if(mk){fs.scrollTop+=mk.getBoundingClientRect().top-fs.getBoundingClientRect().top-6;}else fs.scrollTop=fs.scrollHeight;if(S.fScroll){S.fScroll=0;setTimeout(()=>{const r=fs.getBoundingClientRect();window.scrollBy({top:r.top-70,behavior:"smooth"});},30);}}}
   v.querySelectorAll("[data-dbnext]").forEach(x=>x.onclick=()=>{S.db.i++;save();render();});
   v.querySelectorAll("[data-dbch]").forEach(x=>x.onclick=()=>{const D=K.중간토론,o=D.라운드[S.db.r].선택[+x.dataset.dbch];S.db.ch[S.db.r]=+x.dataset.dbch;const gid=o.준다?rid(o.준다,"case.js · 중간토론"):null;if(gid&&!has(gid))S.found.push(gid);save();render();});
   v.querySelectorAll("[data-dbround]").forEach(x=>x.onclick=()=>{S.db.r++;S.db.i=1;save();render();});
