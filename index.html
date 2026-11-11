@@ -137,7 +137,7 @@ button.castc.sel{border-color:var(--spot);box-shadow:inset 0 0 0 1px var(--spot)
 .casesum .sub{color:#8a7a62;font-size:13px}
 .ntab.on{background:var(--paper-ink);color:var(--paper)}
 #overlay .note{height:88vh}
-.pin{font:inherit;font-size:17px;line-height:1;background:none;border:0;color:#b9a88a;cursor:pointer;padding:2px 6px;margin-left:6px;vertical-align:middle}
+.pin{font:inherit;font-size:18px;line-height:1;background:none;border:0;color:#b9a88a;cursor:pointer;padding:2px 6px 2px 0;margin:0 4px 0 0;vertical-align:-1px}
 .pin.on{color:#e0a92e}
 .card .pin{color:#8d8170}.card .pin.on{color:#f0b83a}
 .evbtn.pinned{border-color:#e0a92e}
@@ -454,10 +454,11 @@ body.blackout::after{content:"";position:fixed;inset:0;pointer-events:none;z-ind
 .shock .av{flex:none}.shock .shk{display:inline-block;font-size:10px;letter-spacing:.2em;color:#ff6b6b;margin-bottom:4px}.shock p{margin:0;font-size:14px;line-height:1.6;color:#f2d9d4}
 .pop-ov.shocked::before{content:"";position:fixed;inset:0;background:#a00;pointer-events:none;animation:redflash .9s forwards;z-index:0}
 .pop-ov.shocked .pop{animation:shk .45s 1}
+.pop-ov.kb{align-items:flex-start;padding-top:12px}
 @keyframes redflash{0%{opacity:.55}15%{opacity:.05}25%{opacity:.35}100%{opacity:0}}
 @keyframes shk{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
 .amen{margin:14px 4px 4px;font-size:14px;color:#c9a0a0;font-style:italic;line-height:1.7;opacity:0;animation:choin 1s 1.4s forwards}
-.pop-ov[data-lockov]{align-items:flex-start;padding-top:8vh}
+
 .ldisp{font-family:var(--mono);font-size:26px;letter-spacing:.18em;text-align:center;color:var(--spot);padding:4px 0}
 .cfsays{max-height:48vh;overflow:auto;padding-right:4px;scroll-behavior:smooth}
 .fsays{max-height:46vh;overflow:auto;padding-right:4px;border-bottom:1px solid var(--line);padding-bottom:8px}
@@ -1236,9 +1237,9 @@ function 인물(o){window.__CHARS.push(o)}
  t:`장작 여섯 개가 겉만 그을리고 속은 멀쩡하다. 불이 막 붙을 무렵 산소가 끊겼다는 뜻이다. 보조의 말로는, 장작을 넣고 10분 안팎에 배기가 막혔다.`,
  v:{type:"report", title:"난로 속 장작 · 보조의 관찰", rows:[["투입 장작","6개 (23:40)"],["겉만 탄화","6개 (속은 그대로)"],["배기 차단 추정","투입 후 10분 안팎"],["연기 역류 흔적","난로 문 주위 짙은 그을음"],["연소 형태","불완전연소 — 연기는 적고 일산화탄소는 많음"],["예상 증상","두통 → 졸음 → 판단력 저하 → 의식 소실"]]},
  f:[["교주의 시신","일산화탄소는 냄새도 색도 없다. 두통과 졸음이 먼저 오고, 사람은 문까지 가지 못한다."]],
- tl:[["23:40","성민이 기도실 난로에 장작 여섯 개를 넣었다"],["23:50 무렵","난로의 배기가 막혔다 (장작 상태로 추정)"]],
+ tl:[["23:40","기도실 난로에 장작 여섯 개가 들어갔다"],["23:50 무렵","난로의 배기가 막혔다 (장작 상태로 추정)"]],
  sum:"23:40 장작을 넣고 10분 안팎에 배기가 막혔다",
- q:"장작을 넣고 곧바로 연통이 막혔습니다. 그 무렵 기도실 근처에 누가 있었습니까?", to:"sungmin", why:"23:40에 장작을 넣은 안성민"},
+ q:"장작을 넣고 곧바로 연통이 막혔습니다. 그 무렵 기도실 근처에 누가 있었습니까?", to:"sungmin", why:"기도실 시중 안성민"},
 {id:"p_ledger", n:"서랍 속 장부 원본", k:"motive", s:"serim",
  t:`강대상 서랍 안쪽, 녹음기 밑에 깔린 장부. 교단 비자금의 원본이다. 돈을 꺼낸 ‘집행’ 칸은 모두 박세림, 그러나 ‘승인’ 칸마다 교주의 도장이 붉게 찍혀 있다. 사무실에서 출력한 사본에는 없던 도장이다.`,
  v:{type:"doc", title:"특별 헌금 출납부 (원본)", lines:["2023.03  산기도원 증축 — 3억 2천","2024.07  미국지부 송금 — 1억 8천","2025.11  문화선교부 음원 구매 대행 — 4억","집행: 박세림 (전 항목)","승인: 구본창 — 도장 (전 항목)"], seal:"구본창"},
@@ -1309,7 +1310,7 @@ function 인물(o){window.__CHARS.push(o)}
  t:`05:12 자동 재생 예약. 「리허설_치유.wav」. 새벽예배 직전, 대예배당 스피커로 ‘이제 일어나시면 돼요’라는 아버지의 속삭임이 나가게 되어 있었다. 05:11, 누군가 콘솔 전원을 내렸다.`,
  v:{type:"report", title:"예약 재생", rows:[["시각","05:12"],["파일","리허설_치유.wav"],["출력","대예배당 메인 스피커"],["설정","03:14 · 찬양팀장"]]},
  tl:[["03:14","음향 콘솔에 05:12 자동 재생이 예약됐다"]],
- q:"새벽예배에서 리허설 녹음을 틀려고 했습니까?", to:"woobin", why:"예약을 건 서우빈"},
+ q:"새벽예배에서 리허설 녹음을 틀려고 했습니까?", to:"woobin", why:"음향 콘솔을 다루는 서우빈"},
 
 /* ───────────── 찬양팀실 ───────────── */
 {id:"t_gap", n:"녹음 파일의 공백", k:"case", s:"jeongmo", a:[["jeongmo","bad"]],
@@ -1443,7 +1444,7 @@ function 인물(o){window.__CHARS.push(o)}
 {id:"f_houses", re:"성민이 아무 표정 없이 창밖을 본다.", n:"교단 소유 주택 명단", k:"motive", s:"sungmin",
  t:`나리 마을의 집들은 거의 다 교단의 것이다. 한 줄에만 빨간 펜이 지나갔다.`,
  v:{type:"doc", title:"나리 마을 교단 소유 주택", lines:["1번지 함○○","2번지 김○○","3번지 안○○ — 1/17 퇴거 (붉은 펜)","5번지 서○○","…"], seal:"구원교"},
- q:"3번지 안○○. 당신 부모님 댁입니까?", to:"sungmin", why:"3번지에 사는 안성민"},
+ q:"3번지 안○○. 당신 부모님 댁입니까?", to:"sungmin", why:"성이 같은 안성민"},
 {id:"r_ledger", n:"비자금 장부 사본", k:"motive", s:"serim",
  t:`세림의 노트북 가방 속 비자금 장부 사본. 줄마다 ‘집행 박세림’. 그런데 ‘승인’ 칸엔 도장이 없다. 23:41 사무실 복합기로 출력됐다. 맨 뒷장에 세림의 메모가 있다.`,
  v:{type:"note", lines:["집행은 내가 했다. 승인은 아버지가 했다.","그런데 12억은 내 이름으로 끝난다.","사본엔 도장이 없다. 아무도 안 믿는다.","도장 찍힌 원본만이 나를 꺼내 줄 수 있다.","원본 — 기도실 강대상 서랍."], sign:"박세림"},
@@ -1558,7 +1559,7 @@ function 인물(o){window.__CHARS.push(o)}
 {id:"a_dist", n:"뒷문 계단에서 연통까지", k:"case", img:"shadow",
  t:`뒷문 계단에서 연통까지 8m. 가로등은 계단 위에 하나뿐이고, 연통 쪽은 그늘이다. 계단에 앉은 사람은 연통 앞을 볼 수 있었다. 얼굴까지는 아니어도.`,
  f:[["수련원의 구조","뒷문 계단에서 연통까지 8m. 연통 쪽은 어둡다."]],
- q:"어젯밤 이 계단에 앉아 있었다면, 연통 쪽에서 무엇을 봤습니까?", to:"allen", why:"23:48~23:56 자리를 비운 마앨런"},
+ q:"어젯밤 이 계단에 앉아 있었다면, 연통 쪽에서 무엇을 봤습니까?", to:"allen", why:"뒷문 밖에 있던 마앨런", qneedAny:["c_2348","h_butts","g_call"]},
 
 /* ───────────── 보일러실 (2차) ───────────── */
 {id:"b_panel", n:"보일러 제어판 기록", k:"amb", s:"hyungjun",
@@ -2878,7 +2879,7 @@ function ask(id,who){
   S.askFor=null;save();render();
 }
 function qaBlock(id,compact){
-  const c=CM[id];if(!c.q)return "";if(c.qneed&&!c.qneed.every(x=>has(x)&&(!CM[x].u||S.attr[x])))return "";const to=toOf(c);
+  const c=CM[id];if(!c.q)return "";const okN=x=>has(x)&&(!CM[x].u||S.attr[x]);if(c.qneed&&!c.qneed.every(okN))return "";if(c.qneedAny&&!c.qneedAny.some(okN))return "";const to=toOf(c);
   const log=S.qa[id]||[];
   let h="";
   let show=log;
@@ -3022,7 +3023,7 @@ const lvNote=c=>{const l=lvOf(c);return l?`<p class="lvnote">${esc(c.lvx||LVN[l]
 const pinB=id=>`<button class="pin ${(S.pin||{})[id]?"on":""}" data-pin="${id}" aria-label="중요 표시">${(S.pin||{})[id]?"★":"☆"}</button>`;
 function clueCard(c){
   const tg=tagsOf(c);
-  return `<div class="card"><span class="cn">${esc(c.n)}${lvStamp(c)}${pinB(c.id)}</span>${viewHTML(c)}<p class="${c.v?"memo":""}">${tShort(c.t)}</p>${reactHTML(c)}${clImg(c)}${lvNote(c)}${tg.length?`<div class="tags">${tg.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}${qaBlock(c.id,true)}</div>`;
+  return `<div class="card"><span class="cn">${pinB(c.id)}${esc(c.n)}${lvStamp(c)}</span>${viewHTML(c)}<p class="${c.v?"memo":""}">${tShort(c.t)}</p>${reactHTML(c)}${clImg(c)}${lvNote(c)}${tg.length?`<div class="tags">${tg.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}${qaBlock(c.id,true)}</div>`;
 }
 function lockBox(k){
   const v=LOCKS[k];
@@ -3229,7 +3230,7 @@ function saidBy(c,who){
 }
 const NTABS=[["case","사건 개요"],["fact","알게 된 사실"],["alibi","알리바이"],["sus","의심 증거"],["unk","주인 모를 증거"],["all","전체 단서"]];
 function noteClue(c){
-  return `<div class="ncard"><h4>${esc(c.n)}${lvStamp(c)}${pinB(c.id)}</h4>${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${qaBlock(c.id)}</div>`;
+  return `<div class="ncard"><h4>${pinB(c.id)}${esc(c.n)}${lvStamp(c)}</h4>${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${qaBlock(c.id)}</div>`;
 }
 const gwa=w=>{const c=w.charCodeAt(w.length-1)-0xAC00;return c>=0&&c%28?"과":"와";};
 function moHTML(m){
@@ -3282,7 +3283,7 @@ function renderNote(){
     const by={};
     S.found.forEach(id=>{const c=CM[id];if(ukOpen(c)||clrd(c))return;const qd=c.q?((S.qa||{})[id]||[]).length>0:!(c.s2&&c.s2.length);[...(qd?susOf(c):[]),S.attr[id]].filter(Boolean).forEach(w=>{(by[w]=by[w]||[]);if(!by[w].includes(c))by[w].push(c)})});
     const ids=P.map(p=>p.id).filter(id=>by[id]);
-    const susItem=(id,c)=>`<details class="ncard fold" data-fold="${id}:${c.id}" ${S.fold&&S.fold[id+":"+c.id]?"open":""}><summary><span>${esc(c.n)}${lvStamp(c)}${pinB(c.id)}</span></summary><div class="fb">${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${saidBy(c,id)}</div></details>`;
+    const susItem=(id,c)=>`<details class="ncard fold" data-fold="${id}:${c.id}" ${S.fold&&S.fold[id+":"+c.id]?"open":""}><summary><span>${pinB(c.id)}${esc(c.n)}${lvStamp(c)}</span></summary><div class="fb">${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${saidBy(c,id)}</div></details>`;
     h=ids.length?ids.map(id=>{const mo=by[id].filter(c=>c.k==="motive"),ot=by[id].filter(c=>c.k!=="motive");return `<div class="nsec"><h4>${esc(PM[id].name)}</h4>${mo.length?`<div class="subh">살해 동기</div>${mo.map(c=>susItem(id,c)).join("")}`:""}${ot.length?`<div class="subh">사건과 정황</div>${ot.map(c=>susItem(id,c)).join("")}`:""}</div>`}).join(""):`<div class="nempty">아직 누군가를 가리키는 증거가 없다.</div>`;
   }else if(S.ntab==="unk"){
     h=`<p class="claim">누구 것인지 모르는 증거. 용의자에게 들고 가서 물어볼 수 있다. 주인이 인정하면 ‘의심 증거’로 옮겨진다.</p>`+(unk.length?unk.map(id=>S.nbFound&&S.nbFound[0]===id?`<div class="ncard found" id="nbfound"><h4>${esc(CM[id].n)}</h4><p>${esc(CM[id].t)}</p>${qaBlock(id)}<div class="foundbar">증거의 주인을 찾았다!<b>「${esc(CM[id].n)}」의 주인은 ${esc(PM[S.nbFound[1]].name)}.</b><small>‘의심 증거’의 ${esc(PM[S.nbFound[1]].name)} 칸으로 옮긴다.</small></div></div>`:noteClue(CM[id])).join(""):`<div class="nempty">주인을 모르는 증거가 없다.</div>`);
@@ -3551,7 +3552,7 @@ function bind(v){
   v.querySelectorAll("[data-form]").forEach(f=>f.onsubmit=e=>{e.preventDefault();tryLock(f.dataset.form,f.querySelector("input").value)});
   v.querySelectorAll("[data-form] input").forEach(i=>{const k=i.closest("form").dataset.form,d=document.getElementById("ld-"+k),n=String(LOCKS[k].ans).length;
     const upd=()=>{if(d){const t=i.value.replace(/\s/g,"");d.textContent=Array.from({length:Math.max(n,t.length)},(_,j)=>t[j]||"_").join(" ");}};
-    i.addEventListener("input",upd);i.addEventListener("keyup",upd);i.addEventListener("focus",()=>setTimeout(()=>i.scrollIntoView({block:"center"}),250));upd();});
+    i.addEventListener("input",upd);i.addEventListener("keyup",upd);i.addEventListener("focus",()=>{const ov=i.closest("[data-lockov]");if(ov&&window.visualViewport&&visualViewport.height<innerHeight*0.8)ov.classList.add("kb");setTimeout(()=>{const ov2=i.closest("[data-lockov]");if(ov2&&window.visualViewport&&visualViewport.height<innerHeight*0.8)ov2.classList.add("kb");i.scrollIntoView({block:"center"});},300);});i.addEventListener("blur",()=>{const ov=i.closest("[data-lockov]");if(ov)ov.classList.remove("kb");});upd();});
   v.querySelectorAll("[data-key]").forEach(b=>b.onclick=()=>{const k=b.dataset.key;S.unl.push(k);S.lockOpen=null;const op=A.find(a=>a.lock===k&&a.open);if(op){S.sub=op.open;S.last=null;if(!did(op.id))S.done.push(op.id);}save();render();});
   v.querySelectorAll("[data-close]").forEach(x=>x.onclick=()=>{S.pop=false;S.askFor=null;S.shock=null;save();render();});
   v.querySelectorAll("[data-popov]").forEach(x=>x.onclick=e=>{if(e.target===x){S.pop=false;S.askFor=null;save();render();}});
