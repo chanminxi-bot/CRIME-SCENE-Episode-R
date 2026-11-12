@@ -3090,9 +3090,9 @@ function moodFX(){
 function render(){try{setTimeout(bgSync,0)}catch(e){}
   try{moodFX()}catch(e){}
   const v=$("view"),pk=S.phase+"|"+S.loc+"|"+S.sub+"|"+S.last+"|"+S.mapOn+"|"+S.pick+"|"+S.ch;
-  const pops=[...v.querySelectorAll(".pop")].map(x=>x.scrollTop),wy=window.scrollY;
+  const pops=[...v.querySelectorAll(".pop")].map(x=>x.scrollTop),wy=window.scrollY,lists=[...v.querySelectorAll(".evlist")].map(x=>x.scrollTop);
   header();v.innerHTML=chapHTML()+VIEWS[S.phase]();bind(v);renderNote();
-  if(KEEP===pk){v.querySelectorAll(".pop").forEach((x,i)=>{x.style.animation="none";if(pops[i]!=null)x.scrollTop=pops[i]});window.scrollTo(0,wy);}
+  if(KEEP===pk){v.querySelectorAll(".pop").forEach((x,i)=>{x.style.animation="none";if(pops[i]!=null)x.scrollTop=pops[i]});v.querySelectorAll(".evlist").forEach((x,i)=>{if(lists[i]!=null)x.scrollTop=lists[i]});window.scrollTo(0,wy);}
   KEEP=pk;
 }
 function clImg(c){const s=imgSrc(c.img);return s?`<img class="sceneimg" src="${s}" alt="${esc(c.n)}">`:""}
