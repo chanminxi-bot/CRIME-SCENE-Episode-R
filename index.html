@@ -3713,7 +3713,9 @@ function confrontHTML(){
 const BG={},BGV={intro:.5,main:.32,outro:.5};let BGcur=null;
 function bgURL(d){try{const m=/^data:([^;]+);base64,(.*)$/.exec(d);if(!m)return d;const bin=atob(m[2]),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([u],{type:m[1]}));}catch(e){return d}}
 setInterval(()=>{try{const k=bgWant();if(!k||BGcur!==k)return;const o=BG[k];if(!o||o.a.ended&&k==="main")return;if(o.a.paused&&o.started&&!document.hidden){const p=o.a.play();if(p&&p.catch)p.catch(()=>{});if(o.v<BGV[k]*0.5)bgFade(o,BGV[k],1500);}}catch(e){}},2000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden){try{const c=ac();if(c&&c.state!=="running")c.resume();}catch(e){}const k=bgWant();if(k&&BG[k]&&BG[k].a.paused&&!(k==="main"&&BG[k].a.ended)){BGcur=null;bgSync();}}});
+function bgHide(){Object.values(BG).forEach(o=>{try{clearInterval(o._f);o._hid=!o.a.paused;o.a.pause();}catch(e){}});try{const c=ac();if(c&&c.state==="running")c.suspend();}catch(e){}}
+addEventListener("pagehide",bgHide);
+document.addEventListener("visibilitychange",()=>{if(document.hidden){bgHide();return;}if(!document.hidden){try{const c=ac();if(c&&c.state!=="running")c.resume();}catch(e){}const k=bgWant();if(k&&BG[k]&&BG[k].a.paused&&!(k==="main"&&BG[k].a.ended)){BGcur=null;bgSync();}}});
 function bgEl(k){if(!BG[k]&&typeof BGM_SRC!=="undefined"&&BGM_SRC[k]){const a=new Audio();a.src=bgURL(BGM_SRC[k]);a.preload="auto";a.loop=k==="intro";a.setAttribute("playsinline","");const o={a,v:0,g:null};
     try{const c=ac();if(c){const s=c.createMediaElementSource(a);o.g=c.createGain();o.g.gain.value=0;s.connect(o.g);o.g.connect(c.destination);a.volume=1;}}catch(e){o.g=null;}
     if(!o.g)a.volume=0;BG[k]=o;}return BG[k];}
@@ -3730,7 +3732,7 @@ function bgBtn(){let b=document.getElementById("bgmute");if(!b){b=document.creat
 let AC=null;
 function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){AC=null}}return AC}
 function sfx(kind){
-  const a=ac();if(!a)return;if(a.state!=="running"){try{const p=a.resume();if(p&&p.then)p.then(()=>sfxGo(kind)).catch(()=>{});}catch(e){}return;}sfxGo(kind);}
+  if(document.hidden)return;const a=ac();if(!a)return;if(a.state!=="running"){try{const p=a.resume();if(p&&p.then)p.then(()=>sfxGo(kind)).catch(()=>{});}catch(e){}return;}sfxGo(kind);}
 function sfxGo(kind){const a=ac();if(!a)return;try{
   const t=a.currentTime,g=a.createGain();g.connect(a.destination);
   if(kind==="tape"){const len=a.sampleRate*0.9,b=a.createBuffer(1,len,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*0.25*(1-i/len);
