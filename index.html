@@ -351,6 +351,7 @@ details.fold .fb{padding:0 12px 12px}
 .ev-doc .org{font-size:11px;letter-spacing:.2em;color:#8a7a62;text-align:center}
 .ev-doc h5{margin:4px 0 10px;text-align:center;font-size:17px}
 .ev-doc p{margin:0 0 6px;font-size:13.5px;font-family:var(--body)}
+.ev .ev-doc p,.ev-doc p,.ncard .ev-doc p{margin:0;line-height:1.6}
 .ev-doc .seal{position:absolute;right:14px;bottom:12px;width:58px;height:58px;border:2.5px solid #c0392b;border-radius:6px;color:#c0392b;font-size:11px;display:grid;place-items:center;text-align:center;transform:rotate(-8deg);opacity:.8;line-height:1.2;font-weight:700}
 .ev-doc .blank{margin-top:10px;font-size:12.5px;color:#666}
 /* 신문 */
@@ -692,7 +693,7 @@ function 인물(o){window.__CHARS.push(o)}
     문단: [
       `13:02. 탐정 보조가 음향 콘솔 전원을 다시 올리는 순간, 수련원의 모든 스피커가 지직거렸다.`,
       `<i>“…자, 이제 일어나시면 돼요.”</i>`,
-      `교주의 목소리였다. 대예배당에서 찬송하던 신도들이 그대로 굳었다. 누군가 음향실 쪽으로 뛰어갔다. 시신이 누운 기도실 바로 앞에서, 죽은 사람이 기적을 연출하고 있었다.`,
+      `교주의 목소리였다. 집회 때마다 병자를 일으켜 세우며 하던 바로 그 말. 대예배당에서 찬송하던 신도들이 그대로 굳었다. 누군가 음향실 쪽으로 뛰어갔다. 교주는 기도실에 시신으로 누워 있는데, 스피커 속 그는 아직도 기적을 연출하고 있었다.`,
       `보조가 시신을 다시 살폈다. 사인은 <b>질식</b>. 무엇이 숨을 막았는지는 아직 모른다. 시반이 선홍색이다. 죽은 사람의 피가, 산 사람처럼 붉다.`,
       `점심 무렵, 함 장로의 확성기 방송이 마을을 돌았다. <i>“아버지의 뜻에 따라 산기도원 이송을 앞당깁니다. 오늘 18시, 차가 떠납니다. 동행자는 준비하십시오.”</i> 대예배당 구석에서 원진이 고개를 들지 않았다. 경찰은 길이 뚫리는 대로 온다고만 했다.`,
       `오후, 길은 여전히 막혀 있다. 대신 몇 개의 문이 열렸다. 정오 기도가 끝나자 함 장로가 뒷골목을 지키던 신도들을 물렸다. 보일러실 열쇠도 마지못해 내놓았다. 세림은 CCTV 녹화기를 열어 봐도 된다고 했다. 비밀번호는 아버지만 아셨다고. 보조가 봉인해 두었던 교주의 열쇠꾸러미와 휴대폰도 이제 쓸 수 있다.`,
@@ -1376,7 +1377,7 @@ function 인물(o){window.__CHARS.push(o)}
  t:`사무실 전화기의 수신 기록. 면담 시간 한가운데, 4분짜리 통화가 하나 있다.`,
  v:{type:"phone", app:"통화", head:"교단 사무실", items:[{t:"태영 매니저 박실장",sub:"수신 · 4분 12초",time:"21:35"},{t:"LA 지부",sub:"부재중",time:"20:12"}]},
  tl:[["21:35","교주가 태영의 매니저와 4분간 통화했다"]], sum:"21:35 교주가 태영의 매니저와 통화 — 탈출 누설",
- q:"21:35, 교주가 태영의 매니저와 통화했습니다. 이 통화에 대해 아는 게 있습니까?", 묻기:["taeyoung","hyungjun","serim","sungmin","jeongmo"]},
+ q:"21:35, 교주가 태영의 매니저와 통화했습니다. 이 통화에 대해 아는 게 있습니까?"},
 {id:"o_finger", n:"서류철 속 메모 조각", k:"info",
  t:`비자금 서류철 사이에 끼어 있던 포스트잇 귀퉁이. 날짜와 금액이 기호처럼 빠르게 적혀 있다. 누군가 서류를 몰래 베껴 적은 모양이다. 교주의 죽음과는 거리가 있어 보인다.`},
 {id:"o_card", n:"새신자 등록카드", k:"amb",
@@ -1436,7 +1437,7 @@ function 인물(o){window.__CHARS.push(o)}
 {id:"f_demol", n:"5년 전 철거 지시서", k:"motive", s:"hyungjun",
  t:`정산서 봉투 안에 섞여 있던 낡은 지시서. 그리고 그 다음 날 지역 신문.`,
  v:[{type:"doc", title:"성지 확장 작업 지시", lines:["2021. 3. 8. 나리 마을 12번지 (송○○)","오늘 안에 끝낼 것.","지붕에서 버티면 지붕째 밀어라.","사고가 나면 실족으로. 경찰과는 이야기됨."], seal:"구본창"},{type:"news", paper:"산내일보", date:"2021년 3월 9일", head:"나리 마을 강제 철거 현장서 집주인 추락사", lines:["8일 오후 나리 마을 12번지 철거 현장에서 지붕 위에서 버티던 집주인 송모(52) 씨가 떨어져 숨졌다.","철거는 마을 일대를 매입한 종교 단체가 진행했다.","경찰은 단순 실족으로 보고 수사를 마무리할 방침이다."]}],
- q:"‘지붕째 밀어라.’ 5년 전 12번지, 당신 아버지입니다.", to:"hyungjun", why:"송형준"},
+ q:"5년 전 12번지에서 떨어져 숨진 집주인 송 씨. 송형준 씨와 성이 같습니다. 가족입니까?", to:"hyungjun", why:"송형준"},
 {id:"f_chart", n:"음원 사재기 정산서", k:"motive", s:"taeyoung",
  t:`금고 아래 칸의 봉투. 태영의 1위는 이렇게 만들어졌다. 그 밑에 서명만 남은 10년짜리 계약서가 겹쳐 있다. 이 두 장이 태영을 묶는 사슬이었다.`,
  v:[{type:"doc", title:"문화선교부 음원 구매 대행 정산", lines:["대상: 김태영 전 곡","기간: 2023.01 ~ 2025.12","구매 계정: 3,200개","집행액: 4억 원","(메모) 명의자 본인 동의 서류 — 위조 완료."], seal:"대외비"},{type:"doc", title:"전속계약 연장 계약서", lines:["아티스트: 김태영","소속: 구원교 문화선교부","기간: 10년 (2026.02 ~ 2036.01)","특약: 차기 앨범 전곡을 찬양으로 한다.","(여백, 붉은 펜) 서명 거부 시 — 정산 자료 공개"], blank:"아티스트 서명: ________", seal:"구원교"}],
@@ -1509,7 +1510,7 @@ function 인물(o){window.__CHARS.push(o)}
  q:"기자였습니다. 왜 신분을 숨겼습니까?", to:"minhee", why:"기자증의 주인 강민희"},
 {id:"b_note", re:"민희가 수첩을 덮으려 손을 뻗는다. 그 눈빛이 새신자의 것이 아니다.", n:"취재수첩", k:"motive", s:"minhee",
  t:`수첩의 첫 장. 명단 3번 ‘강민서’ 옆에, 등록카드와 똑같은 반듯한 글씨로 ‘내 동생’이라고 적혀 있다. 수첩 사이에 사진 한 장이 끼워져 있다.`,
- v:{type:"note", lined:true, lines:["강민서(21). 내 동생.","2025년 여름 입교. 11월 이후 연락 끊김.","엄마한테 몰래 문자 한 통 — ‘오빠 나 여기서 나가고 싶어’ 그 뒤로 끊김.","1/20 산기도원 입소 명단 3번. 사유: 가족에게 몰래 연락.","같은 곳에서 2019년 이순애(교주 배우자) ‘기도 중 소천’.","1/9 데스크 — LA발 익명 제보. 명단 원본 확인.","보도로는 늦는다. 1/16 밤."], sign:"강민희"},
+ v:{type:"note", lined:true, lines:["강민서(21). 내 동생.","2025년 여름 입교. 11월 이후 연락 끊김.","엄마한테 몰래 문자 한 통 — ‘오빠 나 여기서 나가고 싶어’ 그 뒤로 끊김.","1/20 산기도원 입소 명단 3번.","사유: 가족에게 몰래 연락.","같은 곳에서 2019년 이순애(교주 배우자) ‘기도 중 소천’.","1/9 데스크 — LA발 익명 제보. 명단 원본 확인.","보도로는 늦는다. 1/16 밤."], sign:"강민희"},
  q:"명단 3번 강민서. 당신 동생입니까?", to:"minhee", why:"수첩의 주인 강민희"},
 {id:"b_rec", n:"민희의 녹음기", k:"case", a:[["minhee","ok"],["wonjin","ok"]],
  t:`밤새 켜져 있던 취재용 녹음기.`,
@@ -1926,6 +1927,7 @@ function 인물(o){window.__CHARS.push(o)}
 
 
   증거답변: {
+    "교단 전화 통화 기록": `태영 형제님 매니저요? 그럼 태영 형제님이 알겠죠. 저는 얼굴도 몰라요.`,
     "LA행 편도 항공권": `Dad가 끊어 줬어요. 계약서에 사인만 받으면 바로 오라고. …이제 사인해 줄 사람이 없네요. 표는 그대로인데.`,
     "찢긴 장부 한 장": `12억… 그중 1억 8천은 LA로 왔다고 했어요. Dad 명의로. (얼굴이 굳는다) 근데 이건… 세림 씨 혼자 뒤집어쓰게 써 놨네요.`,
     "엿들은 대화": `Ledger. 장부 원본이요. ‘그 사람은 이제’ 다음은… 이제 우리를 못 묶는다, 그 말이었어요. Not what you think.`,
@@ -1938,7 +1940,7 @@ function 인물(o){window.__CHARS.push(o)}
     "교주의 휴대폰": `(웃음이 멎는다) Jesus… ‘너만 특별히 안수해 주마.’ LA에도 이런 문자 받은 사람들 있었어요. Dad가 그 사람들 데리고 나오려다 찍혔고요. …이게 제가 보낸 사진보다 훨씬 확실한 증거네요.`,
     "산기도원 이송 명단": `LA에도 이런 데 있어요. ‘수양관.’ 이름만 예쁘죠. Dad가 거기 사람들 빼내려다 미움받았어요.`,
     "미국지부 인수 계약서": [`아, 그거요. Dad가 다음 주에 서명하러 와요. 본부랑 하나가 되는 거죠. Great news, right?`, `Okay, 솔직히 말할게요. Dad가 평생 지킨 교회를 뺏는 계약이에요. 서명하면 Dad는 ‘고문’. 이름만 남는 거예요. Nice title, no power.`],
-    "CCTV — 23:48~23:56": { 답: `…Busted. 잠깐 바람 쐬러 나갔어요. Dad랑 통화하느라고요. 어디서요? 그냥… 밖이요. 그게 다예요.`, 알면: { "앨런의 증언 — 연통 앞 그림자": `네, 그 8분이 제가 계단에 있던 시간이에요. 이미 다 말씀드렸잖아요. 연통 앞 그 사람 얘기까지.`, "뒷문 계단의 담배꽁초": { 답: `…꽁초까지 찾으셨구나. Okay. 뒷문 계단에서 피웠어요. 여기 담배 금지잖아요. Dad랑 통화하면서. 그리고— 연통 쪽에 누가 있었어요. 웅크리고. 뭘 만지길래 관리자분인 줄 알았어요. 아, 걸쇠는 제가 나갈 때 이미 풀려 있었어요. Seriously.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
+    "CCTV — 23:48~23:56": { 답: `…Busted. 잠깐 바람 쐬러 나갔어요. Dad랑 통화하느라고요. 어디서요? 그냥… 밖이요. 그게 다예요.`, 알면: { "앨런의 증언 — 연통 앞 그림자": `네, 그 8분이 제가 계단에 있던 시간이에요. 이미 다 말씀드렸잖아요. 연통 앞 그 사람 얘기까지.`, "뒷문 계단의 담배꽁초": { 답: `…아까 꽁초 찾으셨잖아요. Okay. 뒷문 계단에서 담배 피웠어요. 여기 담배 금지잖아요. Dad랑 통화하면서. 그리고— 연통 쪽에 누가 있었어요. 웅크리고. 뭘 만지길래 관리인인 줄 알았어요. 아, 걸쇠는 제가 나갈 때 이미 풀려 있었어요. Seriously.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
     "뒷문 계단에서 연통까지": { 답: `계단이요? 저는 그 시간에 사무실에 있었다니까요. 세림 씨랑. 그다음엔 침대랑 jet lag랑.`, 알면: { "CCTV — 23:48~23:56": { 답: `…CCTV 보셨군요. Okay. 네, 여기 앉아 있었어요. 열한 시 오십 분쯤. 저 어둠 속에 누가 웅크리고 있었어요. 뭘 만지길래 관리인인 줄 알았죠. 그리고 제가 나올 때 걸쇠는 이미 풀려 있었어요. 누가 먼저 나갔다는 거예요.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
     "땅콩버터 병": [`제 아침이에요. 한국 빵은 너무 달아서. …알레르기요? Come on, 저는 그분 방 근처에도 안 갔어요.`, { 답: `얼굴 보셨잖아요. 부은 데 하나 없었죠? 알레르기면 그렇게 안 돼요. 그분 음식엔 손도 안 댔어요. Trust me.`, 알면: { "검안 메모": `부은 데 없었다면서요. See? 그냥 제 아침이었다니까요. Peanut butter is innocent.` } }],
     "앨런의 통화 기록": { 답: `Dad요. 칠 분. 사무실 밖 복도에서 했어요. 세림 씨 앞에서 하기 좀 그래서.`, 알면: { "CCTV — 23:48~23:56": `Dad요. 칠 분. …Okay, 복도 아니고 뒷문 계단. 담배 피우면서. Dad가 울었어요. 태어나서 처음 들었어요, Dad 우는 거.` } },
@@ -1971,7 +1973,7 @@ function 인물(o){window.__CHARS.push(o)}
     "파문 규정": `살아 있는 사람 장례를 치른다니. LA 지부엔 이 조항이 없어요. 아버지가 끝까지 안 넣었거든요. 그래서 지부를 뺏기는 거고요.`,
     "교주의 휴대폰": `(한참 말이 없다) ‘너만 특별히 안수해 주마.’ LA에도 이런 문자를 받은 사람들이 있었어요. 아버지가 그 사람들을 데리고 나오려다 찍혔고요. …제가 보낸 사진보다 이게 훨씬 확실하네요.`,
     "미국지부 인수 계약서": `아버지가 평생 지킨 교회를 뺏는 계약이에요. 서명하면 아버지는 ‘고문’이 돼요. 이름만 남고 아무것도 못 하는 자리. 그래서 제가 장부를 찍었어요.`,
-    "CCTV — 23:48~23:56": { 답: `…네. 잠깐 나갔어요. 아버지랑 통화하느라고요. 어디서였는지는… 밖이요. 그게 다예요.`, 알면: { "앨런의 증언 — 연통 앞 그림자": `네, 그 8분이 제가 계단에 있던 시간이에요. 다 말씀드렸잖아요. 연통 앞 그 사람 얘기까지.`, "뒷문 계단의 담배꽁초": { 답: `꽁초까지 찾으셨네요. 뒷문 계단에서 피웠어요. 여기 담배 금지잖아요. 아버지랑 통화하면서. 그때 연통 쪽에 누가 있었어요. 웅크리고. 뭘 만지길래 관리인인 줄 알았어요. 걸쇠는 제가 나갈 때 이미 풀려 있었어요.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
+    "CCTV — 23:48~23:56": { 답: `…네. 잠깐 나갔어요. 아버지랑 통화하느라고요. 어디서였는지는… 밖이요. 그게 다예요.`, 알면: { "앨런의 증언 — 연통 앞 그림자": `네, 그 8분이 제가 계단에 있던 시간이에요. 다 말씀드렸잖아요. 연통 앞 그 사람 얘기까지.`, "뒷문 계단의 담배꽁초": { 답: `아까 꽁초 찾으셨잖아요. 뒷문 계단에서 담배 피웠어요. 여기 담배 금지잖아요. 아버지랑 통화하면서. 그때 연통 쪽에 누가 있었어요. 웅크리고. 뭘 만지길래 관리인인 줄 알았어요. 걸쇠는 제가 나갈 때 이미 풀려 있었어요.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
     "뒷문 계단에서 연통까지": { 답: `계단이요? 그 시간엔 사무실에 있었어요. 세림 씨랑.`, 알면: { "CCTV — 23:48~23:56": { 답: `CCTV 보셨으면 아시겠네요. 네, 여기 앉아 있었어요. 열한 시 오십 분쯤. 저 어둠 속에 누가 웅크리고 있었어요. 뭘 만지길래 관리인인 줄 알았죠. 제가 나올 때 걸쇠는 이미 풀려 있었어요. 누가 먼저 나갔다는 거예요.`, 새증거: "앨런의 증언 — 연통 앞 그림자" } } },
     "땅콩버터 병": [`제 아침이에요. 한국 빵은 너무 달아서요. 알레르기요? 저는 그분 방 근처에도 안 갔어요.`, { 답: `얼굴 보셨잖아요. 부은 데 하나 없었죠. 알레르기면 그렇게 안 돼요. 그분 음식엔 손도 안 댔어요.`, 알면: { "검안 메모": `부은 데 없었다면서요. 그냥 제 아침이었어요.` } }],
     "앨런의 통화 기록": { 답: `아버지요. 칠 분. 사무실 밖 복도에서 했어요. 세림 씨 앞에서 하기 좀 그래서.`, 알면: { "CCTV — 23:48~23:56": `아버지요. 칠 분. …복도 아니고 뒷문 계단이었어요. 담배 피우면서. 아버지가 울었어요. 태어나서 처음 들었어요, 아버지 우는 거.` } },
@@ -2068,6 +2070,7 @@ function 인물(o){window.__CHARS.push(o)}
 
 
   증거답변: {
+    "교단 전화 통화 기록": `태영이 매니저분이라면 태영이가 알 겁니다. …저는 그 시간엔 이미 면담을 마치고 나와 있었습니다.`,
     "거꾸로 들리는 목소리": `순애… 어머니 이름입니다. ‘거기’가 어디인지는… 모르겠습니다. 정말로.`,
     "고해 테이프 상자": `‘구정모 — 2019. 3. 3. 서명.’ …제가 서명하던 날도 녹음했군요. 그 방에서 무슨 말을 했는지 기억도 안 납니다. 아멘만 했겠죠. ‘이순애’ 테이프는 그 바로 옆에 있네요.`,
     "서랍에서 꺼낸 것": `(주머니에서 꺼내 손바닥에 올린다) 반지입니다. 어머니 반지. 산으로 가던 날 그 사람이 빼앗아 서랍에 넣었습니다. 칠 년 동안 거기 있는 걸 알면서 못 꺼냈어요. 오늘에야.`,
@@ -2181,6 +2184,7 @@ function 인물(o){window.__CHARS.push(o)}
 
 
   증거답변: {
+    "교단 전화 통화 기록": `태영이 매니저 형이요? 그건 태영이한테 물어보는 게 제일 빠를 거예요.`,
     "카펫 밑의 바닥 문": `바닥 문이요? 몰랐어요… 근데 찬양할 때 가끔 발밑이 울렸어요. 쿵, 쿵. 베이스 소리인 줄 알았는데. (웃음이 사라진다) …아니었구나.`,
     "지하 회개실": `…그래서 기도회 찬양을 그렇게 크게 하라고 했구나. 밑에서 나는 소리 안 들리게. (기타를 내려놓는다)`,
     "고해 테이프 상자": `2018년 9월… 엄마 얘기 했던 날이에요. 여기서. 녹음되고 있는 줄도 모르고.`,
@@ -2283,6 +2287,7 @@ function 인물(o){window.__CHARS.push(o)}
 
 
   증거답변: {
+    "교단 전화 통화 기록": `태영 형제님 매니저면 태영 형제님이 알겠죠. 그걸 왜 저한테 물어요?`,
     "벽 속의 쪽지": `(쪽지를 쥔 손이 떨린다) …들렸대요. 제 아멘이. 누나는 이 밑에서 그걸 듣고 있었대요. 저는 누나 들으라고 크게 한 게 아니었는데. 아무도 저를 안 보라고 크게 한 건데.`,
     "거꾸로 들리는 목소리": `(웃음기가 사라진다) 노래 끝날 때까지 나오지 마라… 그래서 기도회 찬양을 그렇게 크게 시켰구나.`,
     "고해 테이프 상자": `‘함지윤 — 12월 29일.’ …누나 목소리가 저 안에 있어요. 트럭에서 내린 그날 새벽. 듣고 싶은데, 듣기 싫어요.`,
@@ -2405,6 +2410,7 @@ function 인물(o){window.__CHARS.push(o)}
 
 
   증거답변: {
+    "교단 전화 통화 기록": `태영 형제님 매니저님이면… 태영 형제님이 아시지 않을까요?`,
     "벽으로 돌려진 사진들": { 답: `누가 이런 일을… 무서워요.`, 알면: { "기자증": `찍어 뒀어요. 돌려진 액자들 앞을 신도들이 고개 숙이고 지나가는 거. 아무도 다시 안 돌려놓아요. 그게 이 마을의 진짜 표정이에요.` } },
     "기도회 녹음": `녹음기 켜 놨어요. 여덟 명이 같은 박자로 아멘. 저도 했어요. 들킬까 봐 제일 크게. 그 순간엔 제가 기자인지 신도인지 저도 헷갈렸어요. 석 달이면 그렇게 돼요.`,
     "집회 날의 남매 사진": `…제가 데려갔어요. 2024년 가을. 문화선교 취재 건이었어요. 민서가 태영 씨 팬이라고 따라오고 싶대서 VIP 목걸이까지 구해 줬어요. 그다음 달에 민서가 혼자 다시 갔어요. 그다음 달에도. 기사 때문에 들어온 거 아니에요. 제가 데려다 놓은 곳에서 동생을 데리고 나오려고 들어온 거예요. 이건 기사에 안 써요. 못 써요.`,
@@ -2543,7 +2549,7 @@ function 인물(o){window.__CHARS.push(o)}
    ===================================================================== */
 인물({
   id: "taeyoung", 이름: "김태영", 나이: 22, 이니셜: "김",
-  역할: "찬양 가수 · 문화선교부 소속",
+  역할: "교단 소속 가수 · 문화선교부",
   사진: "",
 
   관계: `김태영이요. 아시잖아요, 다들 아는데. 교단이 키운 가수예요. 데뷔도, 1위도, 다 아버지 은혜고요. 아버지는 하늘로 부름 받으셨고… 저는 아버지께 받은 노래로 보내 드릴 거예요. 그 말 그대로 써 주세요. 기사 나가면.`,
@@ -2577,11 +2583,11 @@ function 인물(o){window.__CHARS.push(o)}
   증거답변: {
     "고해 테이프 상자": `2020년 4월 14일. 데뷔 날. 계약서에 서명하기 전에 고해부터 하라더라고요. 그게 이거였네.`,
     "벽으로 돌려진 사진들": `몰라요. 저 오후 내내 대예배당에 있었어요.`,
-    "은지 어머니의 메시지": `…은지예요. 편지 쓴 애. 지난달에 갔어요. 마지막까지 제 노래 틀어 달라고 했대요. 3,200개짜리 그 1위 곡을. 답장 쓰다가 못 보냈어요. ‘죄송합니다, 그 1위는.’ 그다음을 못 쓰겠더라고요. 그 애는 진짜였는데. 그래서 계약서에 서명을 못 했어요. 서명하면 그 노래가 끝까지 가짜로 남으니까.`,
+    "은지 어머니의 메시지": `…은지예요. 편지 쓴 애. 지난달에 갔어요. 마지막까지 제 노래 틀어 달라고 했대요. 교단이 4억 들여 사 준 그 1위 곡을. 답장 쓰다가 못 보냈어요. ‘죄송합니다, 그 1위는.’ 그다음을 못 쓰겠더라고요. 그 애는 진짜였는데. 그래서 계약서에 서명을 못 했어요. 서명하면 그 노래가 끝까지 가짜로 남으니까.`,
     "기도회 녹음": `‘이 중 한 사람이 회개할 것이다.’ 그 말 듣는데 저인 줄 알았어요. 서명 안 한 계약서가 가방에 있었으니까. 근데 둘러보니까 다들 고개를 숙이고 있더라고요. 여덟 명이 다. 웃기죠. 다들 자기 얘긴 줄 알았던 거예요.`,
     "이름 없는 성가대": `우빈 형제님 원곡이요? …‘일어나지 않아도 괜찮아요.’ 이게 원래 가사였구나. 우리가 매주 부른 건 그 반대였네.`,
     "집회 날의 남매 사진": `2024년 가을 집회요? 제 무대였어요. 맨 앞줄에 VIP 목걸이… (얼굴이 굳는다) 이 애, 제 팬이었어요? 제가 무대에서 ‘여러분도 아버지 품으로 오세요’ 했던 그날이에요.`,
-    "복구된 메모 조각": { 답: `…지웠어요. 그래요. 남의 휴대폰을… 하. 한 시 반에 기도실 앞에 갔어요. 그런데 문이 열리더니 세림 씨가 나왔어요. 뒷걸음질로. 열쇠로 문 잠그고 도망갔어요. 그래서 아무것도 못 하고 왔어요. 됐죠?`, 새증거: "태영의 증언 — 01:36", 확정: ["복구된 메모 조각"] },
+    "복구된 메모 조각": { 답: `…지웠어요. 그래요. 남의 휴대폰을… 하. 한 시 반에 기도실 앞에 갔어요. 그런데 문이 열리더니 세림 씨가 나왔어요. 뒷걸음질로. 열쇠로 문 잠그고 도망갔어요. 그래서 아무것도 못 하고 왔어요. 됐죠?`, 새증거: "태영의 증언 — 01:36", 확정: ["복구된 메모 조각"], 알면: { "태영의 증언 — 01:36": `아까 다 말했잖아요. 지운 것도 그 얘기예요. 한 시 반, 세림 씨, 잠긴 문. 못 했다. 몇 번을 말해요.` } },
     "늘어난 넥타이": [`무대 올라가기 전에 긴장하면 그렇게 쥐어요. 버릇이에요. 그게 무슨 문제예요?`, { 답: `버릇이라니까요. 몇 번을 말해요.`, 알면: { "01:40의 메모": `…메모까지 보셨네요. 네. 기도실 문 앞에서 그걸 양손에 감고 오래 서 있었어요. 그래서 늘어난 거예요. 이제 만족하세요?` } }],
     "녹음 — 01:38 문고리": [`몰라요. 저는 찬양팀실에서 자고 있었어요.`, { 답: `몰라요. 자고 있었다니까요.`, 알면: { "복구된 메모 조각": { 답: `…메모까지 복구하셨네요. 저예요. 세림 씨가 나가고 2분 뒤에 그 문고리 두 번 당겼어요. 잠겨 있었어요.`, 확정: ["녹음 — 01:38 문고리"] }, "01:40의 메모": { 답: `…메모 보셨으면 아시잖아요. 저예요. 세림 씨가 나가고 2분 뒤에 그 문고리 두 번 당겼어요. 잠겨 있었어요. 그 메모에 쓴 ‘못 했다’가 그거예요.`, 확정: ["녹음 — 01:38 문고리", "01:40의 메모"] }, "태영의 증언 — 01:36": { 답: `…저예요. 세림 씨 나가고 나서 문고리 당겼어요. 잠겨 있었어요.`, 확정: ["녹음 — 01:38 문고리"] } } }],
     "01:40의 메모": { 답: `남의 메모를… 하. (한참 말이 없다) 기도실 앞에 갔어요. 한 시 반쯤. 그런데 문이 열리더니 세림 씨가 나왔어요. 뒷걸음질로. 얼굴이 하얗게 질려서. 열쇠로 문 잠그고 도망갔어요. 그래서 아무 것도 못하고 왔어요. 됐죠?`, 새증거: "태영의 증언 — 01:36", 확정: ["01:40의 메모"], 알면: { "태영의 증언 — 01:36": `이미 다 말했잖아요. 한 시 반, 세림 씨, 잠긴 문. 못 했다. 그게 전부예요.` } },
@@ -2609,8 +2615,8 @@ function 인물(o){window.__CHARS.push(o)}
     "벽으로 돌려진 사진들": `몰라요. 오후 내내 대예배당에 있었어요. …돌려놓은 사람 마음은 알 것 같아요.`,
     "늘어난 넥타이": [`무대 올라가기 전에 긴장하면 그렇게 쥐어요. 버릇이에요.`, { 답: `버릇이에요. …그것만은 아니지만요.`, 알면: { "01:40의 메모": `메모 보셨죠. 기도실 문 앞에서 그걸 양손에 감고 오래 서 있었어요. 그래서 늘어난 거예요.` } }],
     "녹음 — 01:38 문고리": [`찬양팀실에서 자고 있었어요. …그렇게 말해 두고 싶어요.`, { 답: `자고 있었어요. 그렇게 말하면 믿어 주실 건가요.`, 알면: { "복구된 메모 조각": { 답: `메모까지 복구하셨네요. 저예요. 세림 씨가 나가고 2분 뒤에 그 문고리를 두 번 당겼어요. 잠겨 있었어요.`, 확정: ["녹음 — 01:38 문고리"] }, "01:40의 메모": { 답: `메모 보셨으면 아시잖아요. 저예요. 세림 씨가 나가고 2분 뒤에 그 문고리를 두 번 당겼어요. 잠겨 있었어요. 메모에 쓴 ‘못 했다’가 그거예요.`, 확정: ["녹음 — 01:38 문고리", "01:40의 메모"] }, "태영의 증언 — 01:36": { 답: `저예요. 세림 씨 나가고 나서 문고리 당겼어요. 잠겨 있었어요.`, 확정: ["녹음 — 01:38 문고리"] } } }],
-    "01:40의 메모": { 답: `(한참 말이 없다) 기도실 앞에 갔어요. 한 시 반쯤. 문이 열리더니 세림 씨가 뒷걸음질로 나왔어요. 얼굴이 하얗게 질려서. 열쇠로 문 잠그고 도망갔어요. 저는 아무것도 못 하고 돌아왔어요.`, 새증거: "태영의 증언 — 01:36", 확정: ["01:40의 메모"], 알면: { "태영의 증언 — 01:36": `다 말했잖아요. 한 시 반, 세림 씨, 잠긴 문. 못 했다. 그게 전부예요.` } },
-    "복구된 메모 조각": { 답: `…지웠어요. 한 시 반에 기도실 앞에 갔어요. 문이 열리더니 세림 씨가 뒷걸음질로 나왔어요. 열쇠로 문 잠그고 도망갔어요. 저는 아무것도 못 하고 왔어요.`, 새증거: "태영의 증언 — 01:36", 확정: ["복구된 메모 조각"] },
+    "01:40의 메모": { 답: `(한참 말이 없다) 기도실 앞에 갔어요. 한 시 반쯤. 문이 열리더니 세림 씨가 뒷걸음질로 나왔어요. 얼굴이 하얗게 질려서. 열쇠로 문 잠그고 도망갔어요. 저는 아무것도 못 하고 돌아왔어요.`, 새증거: "태영의 증언 — 01:36", 확정: ["01:40의 메모"], 알면: { "태영의 증언 — 01:36": `아까 다 말했잖아요. 한 시 반, 세림 씨, 잠긴 문. 못 했다. 그게 전부예요.` } },
+    "복구된 메모 조각": { 답: `…지웠어요. 한 시 반에 기도실 앞에 갔어요. 문이 열리더니 세림 씨가 뒷걸음질로 나왔어요. 열쇠로 문 잠그고 도망갔어요. 저는 아무것도 못 하고 왔어요.`, 새증거: "태영의 증언 — 01:36", 확정: ["복구된 메모 조각"], 알면: { "태영의 증언 — 01:36": `…이미 말씀드렸잖아요. 지운 메모도 그 얘기예요. 한 시 반, 세림 씨, 잠긴 문. 못 했다.` } },
     "녹음 파일의 23:52": `그때 허밍하고 있었어요. 우빈 형제님 기타에 맞춰서. 들어 보시면 알아요.`,
     "목의 붉은 줄": [`몰라요. …저 보지 마세요. 제가 한 거 아니에요.`, `칼라 자국이라면서요. 제 넥타이 아니에요.`],
     "매니저와의 대화": `정모 형이랑 성민이 부탁이었어요. 형이 저한테 처음으로 뭘 부탁했어요. 다섯 시 반. 저도 같이 떠날 거였어요. 여기서 다 끝내고 싶었어요.`
@@ -2674,6 +2680,7 @@ function 인물(o){window.__CHARS.push(o)}
 
 
   증거답변: {
+    "교단 전화 통화 기록": `몰라요. 태영 형 매니저면 태영 형한테 물어보세요.`,
     "카펫 밑의 바닥 문": `…알아요. 시중은 그 위를 걸어 다녀요. 매일 밤. 소리 나면 안 돼요.`,
     "지하 회개실": `(손전등 빛을 피한다) 회개하는 곳이에요. 아버지가 그렇게 말씀하셨어요.`,
     "연통 받침의 반사 실밥": `…그 패딩, 다들 입고 다녀요. 겨울엔.`,
@@ -3045,10 +3052,12 @@ function ask(id,who){
   const log=S.qa[id]=S.qa[id]||[];
   if(!log.some(x=>x[0]===who&&x[1]===t))log.push([who,t,yes?1:0,gave,0,R,brk,brk?0:wm]);else log.find(x=>x[0]===who&&x[1]===t)[5]=R;
   if(rb&&!log.some(x=>x[0]===rb[0]&&x[1]===rb[1]))log.push(rb);
-  if(yes&&S.nb&&S.ntab==="unk"){S.nbFound=[id,who];setTimeout(()=>{const f=document.getElementById("nbfound");if(f)f.scrollIntoView({block:"center",behavior:"smooth"});},60);setTimeout(()=>{S.nbFound=null;save();if(S.nb&&S.ntab==="unk"){const nb=$("nbody"),y=nb.scrollTop;renderNote();nb.scrollTop=y;}},10000);}
+  let ukA=null;if(yes&&S.nb&&S.ntab==="unk"){S.nbFound=[id,who];const e=document.querySelector(`#nbody [data-uk="${id}"]`);if(e)ukA=[id,e.getBoundingClientRect().top];
+    setTimeout(()=>{if(!(S.nbFound&&S.nbFound[0]===id))return;const nb=$("nbody"),cur=nb.querySelector(`[data-uk="${id}"]`),nx=cur&&cur.nextElementSibling&&cur.nextElementSibling.dataset.uk;const t0=nx?cur.nextElementSibling.getBoundingClientRect().top:0,h0=cur?cur.getBoundingClientRect().height:0;
+      S.nbFound=null;save();if(S.nb&&S.ntab==="unk"){const y=nb.scrollTop;renderNote();nb.scrollTop=y;const n2=nx&&nb.querySelector(`[data-uk="${nx}"]`);if(n2)nb.scrollTop+=n2.getBoundingClientRect().top-t0;else if(cur)nb.scrollTop=Math.max(0,y-h0);}},10000);}
   {const fb=EVS.find(e=>e.회상&&e.주인===who&&e.needIds.includes(id)&&!(S.ev||{})[e.id]);if(fb){S.ev=S.ev||{};S.ev[fb.id]=1;S.evCard=fb.id;}}
   S.lastWho=S.lastWho||{};S.lastWho[id]=who;
-  S.askFor=null;save();render();
+  S.askFor=null;save();render();if(ukA){const nb=$("nbody"),e=nb&&nb.querySelector(`[data-uk="${ukA[0]}"]`);if(e)nb.scrollTop+=e.getBoundingClientRect().top-ukA[1];}
 }
 function reMk(c,x){const M=MASK[x[0]];if(!(x[7]&&M&&M.ans&&M.ans[c.id]!==undefined&&c.ans&&c.ans[x[0]]!==undefined))return false;const r=resolveAns(c.ans[x[0]]);return !!((r.g&&!has(r.g))||(r.g2||[]).some(z=>!has(z)));}
 function anyReask(w){return Object.keys(S.qa||{}).some(id=>CM[id]&&(S.qa[id]||[]).some(x=>x[0]===w&&!x[4]&&reMk(CM[id],x)&&!S.qa[id].some(y=>y[0]===w&&y!==x&&!y[4]&&!reMk(CM[id],y))));}
@@ -3467,7 +3476,7 @@ function renderNote(){
     const susItem=(id,c)=>`<details class="ncard fold" data-fold="${id}:${c.id}" ${S.fold&&S.fold[id+":"+c.id]?"open":""}><summary><span class="ttl">${pinB(c.id)}<span class="nm">${esc(c.n)}</span>${lvStamp(c)}</span></summary><div class="fb">${viewHTML(c)}<p class="${c.v?"memo":""}">${esc(c.t)}</p>${clImg(c)}${lvNote(c)}${saidBy(c,id)}</div></details>`;
     h=ids.length?ids.map(id=>{const mo=by[id].filter(c=>c.k==="motive"),ot=by[id].filter(c=>c.k!=="motive");return `<div class="nsec"><h4>${esc(PM[id].name)}</h4>${mo.length?`<div class="subh">살해 동기</div>${mo.map(c=>susItem(id,c)).join("")}`:""}${ot.length?`<div class="subh">사건과 정황</div>${ot.map(c=>susItem(id,c)).join("")}`:""}</div>`}).join(""):`<div class="nempty">아직 누군가를 가리키는 증거가 없다.</div>`;
   }else if(S.ntab==="unk"){
-    h=`<p class="claim">누구 것인지 모르는 증거. 용의자에게 들고 가서 물어볼 수 있다. 주인이 인정하면 ‘의심 증거’로 옮겨진다.</p>`+(unk.length?unk.map(id=>S.nbFound&&S.nbFound[0]===id?`<div class="ncard found" id="nbfound"><h4>${esc(CM[id].n)}</h4><p>${esc(CM[id].t)}</p>${qaBlock(id)}<div class="foundbar">증거의 주인을 찾았다!<b>「${esc(CM[id].n)}」의 주인은 ${esc(PM[S.nbFound[1]].name)}.</b><small>‘의심 증거’의 ${esc(PM[S.nbFound[1]].name)} 칸으로 옮긴다.</small></div></div>`:noteClue(CM[id])).join(""):`<div class="nempty">주인을 모르는 증거가 없다.</div>`);
+    h=`<p class="claim">누구 것인지 모르는 증거. 용의자에게 들고 가서 물어볼 수 있다. 주인이 인정하면 ‘의심 증거’로 옮겨진다.</p>`+(unk.length?unk.map(id=>`<div data-uk="${id}">`+(S.nbFound&&S.nbFound[0]===id?`<div class="ncard found" id="nbfound"><h4>${esc(CM[id].n)}</h4><p>${esc(CM[id].t)}</p>${qaBlock(id)}<div class="foundbar">증거의 주인을 찾았다!<b>「${esc(CM[id].n)}」의 주인은 ${esc(PM[S.nbFound[1]].name)}.</b><small>‘의심 증거’의 ${esc(PM[S.nbFound[1]].name)} 칸으로 옮긴다.</small></div></div>`:noteClue(CM[id]))+`</div>`).join(""):`<div class="nempty">주인을 모르는 증거가 없다.</div>`);
   }else{
     const groups=LOCS.map(l=>[l.name,S.found.filter(id=>CLOC[id]===l.id)]).concat([["진술",S.found.filter(id=>!LOCS.some(l=>l.id===CLOC[id]))]]);
     h=groups.map(([nm,list])=>list.length?`<div class="nsec locgroup"><h4>${esc(nm)} · ${list.length}</h4>${list.map(id=>noteClue(CM[id])).join("")}</div>`:"").join("")||`<div class="nempty">아직 찾은 단서가 없다.</div>`;
@@ -3747,7 +3756,7 @@ function bind(v){
   v.querySelectorAll("[data-form]").forEach(f=>f.onsubmit=e=>{e.preventDefault();tryLock(f.dataset.form,f.querySelector("input").value)});
   v.querySelectorAll("[data-form] input").forEach(i=>{const k=i.closest("form").dataset.form,d=document.getElementById("ld-"+k),n=String(LOCKS[k].ans).length;
     const upd=()=>{if(d){const t=i.value.replace(/\s/g,"");d.textContent=Array.from({length:Math.max(n,t.length)},(_,j)=>t[j]||"_").join(" ");}};
-    i.addEventListener("input",upd);i.addEventListener("keyup",upd);i.addEventListener("focus",()=>{const ov=i.closest("[data-lockov]");if(ov&&window.visualViewport&&visualViewport.height<innerHeight*0.8)ov.classList.add("kb");setTimeout(()=>{const ov2=i.closest("[data-lockov]");if(ov2&&window.visualViewport&&visualViewport.height<innerHeight*0.8)ov2.classList.add("kb");i.scrollIntoView({block:"center"});},300);});i.addEventListener("blur",()=>{const ov=i.closest("[data-lockov]");if(ov)ov.classList.remove("kb");});upd();});
+    i.addEventListener("input",upd);i.addEventListener("keyup",upd);i.addEventListener("pointerdown",()=>{i.__y=window.scrollY;},{passive:true});i.addEventListener("focus",()=>{const y0=i.__y!=null?i.__y:window.scrollY;const fix=()=>{const ov=i.closest("[data-lockov]");if(!ov)return;if(window.visualViewport&&visualViewport.height<innerHeight*0.8)ov.classList.add("kb");if(Math.abs(window.scrollY-y0)>1)window.scrollTo(0,y0);const pop=i.closest(".pop");if(pop){const d=i.getBoundingClientRect().top-pop.getBoundingClientRect().top;if(d>pop.clientHeight-60)pop.scrollTop+=d-40;}};fix();[80,300,600].forEach(t=>setTimeout(fix,t));if(window.visualViewport){const vr=()=>fix();visualViewport.addEventListener("resize",vr);i.addEventListener("blur",()=>visualViewport.removeEventListener("resize",vr),{once:true});}});i.addEventListener("blur",()=>{const ov=i.closest("[data-lockov]");if(ov)ov.classList.remove("kb");});upd();});
   v.querySelectorAll("[data-key]").forEach(b=>b.onclick=()=>{const k=b.dataset.key;S.unl.push(k);S.lockOpen=null;const op=A.find(a=>a.lock===k&&a.open);if(op){S.sub=op.open;S.last=null;if(!did(op.id))S.done.push(op.id);}save();render();});
   v.querySelectorAll("[data-close]").forEach(x=>x.onclick=()=>{S.pop=false;S.askFor=null;S.shock=null;save();render();});
   v.querySelectorAll("[data-popov]").forEach(x=>x.onclick=e=>{if(e.target===x){S.pop=false;S.askFor=null;save();render();}});
