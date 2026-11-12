@@ -137,6 +137,8 @@ button.castc.sel{border-color:var(--spot);box-shadow:inset 0 0 0 1px var(--spot)
 .casesum .sub{color:#8a7a62;font-size:13px}
 .ntab.on{background:var(--paper-ink);color:var(--paper)}
 #overlay .note{height:88vh}
+.share{display:block;width:100%;margin:18px 0 10px;padding:13px 16px;border-radius:12px;border:1px solid #2a2a2a;background:#0f0f0f;color:#fff;font:inherit;font-weight:700;letter-spacing:.02em;cursor:pointer}
+.share:active{transform:translateY(1px)}
 #bgmute{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:80;background:rgba(20,16,14,.75);color:#d9c9a8;border:1px solid #5a4a3a;border-radius:16px;padding:6px 12px;font-size:13px}
 .pin{font:inherit;font-size:18px;line-height:1;background:none;border:0;color:#b9a88a;cursor:pointer;padding:2px 6px 2px 0;margin:0 4px 0 0;vertical-align:-1px}
 .pin.on{color:#e0a92e}
@@ -3379,10 +3381,10 @@ function truthView(){
    ${T_.한줄?`<p class="line">${esc(T_.한줄)}</p>`:""}</section>
    ${S.ending==="true"&&K.진범회상?`<section class="evpop flashback tflash"><span class="eyebrow">회상 · 안성민</span><h3>${esc(K.진범회상.제목||"")}</h3>${K.진범회상.글.map(t=>`<p>${esc(t)}</p>`).join("")}</section>`:""}<section><h3>사건 개요</h3>${truthHTML()}</section>
    <section><h3>결정적 증거</h3>${evsHTML()}</section>
-   <div class="row2"><button class="ghost" data-toend>엔딩으로 돌아가기</button><button class="primary" data-reset>처음부터 다시</button></div></div>`;
+   <button class="share" data-share>𝕏 트위터에 결과 공유하기</button><div class="row2"><button class="ghost" data-toend>엔딩으로 돌아가기</button><button class="primary" data-reset>처음부터 다시</button></div></div>`;
 }
 function endView(){
-  const E=S.ending,btns=`<div class="row2"><button class="ghost" data-opennb>탐정 노트 보기</button><button class="primary" data-reset>처음부터 다시</button></div>`;
+  const E=S.ending,btns=`<button class="share" data-share>𝕏 트위터에 결과 공유하기</button><div class="row2"><button class="ghost" data-opennb>탐정 노트 보기</button><button class="primary" data-reset>처음부터 다시</button></div>`;
   const tr=`<div class="row2 truthbtns ${E==="true"||S.showTruth?"solo":""}">${E!=="true"&&!S.showTruth?`<button class="ghost" data-reacc>범인 다시 지목하기</button>`:""}<button class="primary" data-truth>진범 확인하기</button></div>`;
   const par=a=>(a||[]).map(t=>`<p>${esc(t)}</p>`).join("");
   if(E==="true"){const e=E_.진실||{};return `<div class="ending true"><span class="eyebrow">${esc(e.머리||"ENDING")}</span><h1>${esc(e.제목||"")}</h1>${imgSrc(e.그림)?`<img class="sceneimg" src="${imgSrc(e.그림)}" alt="">`:""}
@@ -3781,6 +3783,11 @@ function bind(v){
   v.querySelectorAll("[data-present]").forEach(b=>b.onclick=()=>present(S.chPick));
   v.querySelectorAll("[data-fzend]").forEach(b=>b.onclick=()=>{S.ending="wrong";S.endWho=S.accused;go("end");});
   v.querySelectorAll("[data-noev]").forEach(b=>b.onclick=()=>present(null));
+  v.querySelectorAll("[data-share]").forEach(b=>b.onclick=()=>{
+    const txt=`크라임씬 : Episode R\n구원교 교주 살인 사건\n\n${S.ending==="true"?"탐정은 추리 끝에 진범을 찾았다.":"아쉽게도 진범을 놓쳤다."}\n\n#블탕화이팅\nhttps://chanminxi-bot.github.io/CRIME-SCENE-Episode-R/${S.ending==="true"?"success":"fail"}.html`;
+    const u="https://twitter.com/intent/tweet?text="+encodeURIComponent(txt);
+    const w=520,h=460,l=Math.max(0,(screen.width-w)/2),t=Math.max(0,(screen.height-h)/2);
+    const win=window.open(u,"share",`width=${w},height=${h},left=${l},top=${t}`);if(win){try{win.opener=null}catch(e){}}else window.open(u,"_blank");});
   v.querySelectorAll("[data-reset]").forEach(b=>b.onclick=()=>{S=fresh();save();render();window.scrollTo(0,0);});
   v.querySelectorAll("[data-truth]").forEach(b=>b.onclick=()=>{S.showTruth=true;go("truth");});
   v.querySelectorAll("[data-toend]").forEach(b=>b.onclick=()=>go("end"));
