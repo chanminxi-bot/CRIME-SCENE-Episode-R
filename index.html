@@ -329,7 +329,7 @@ details.fold .fb{padding:0 12px 12px}
 .ev-phone .m small{display:block;font-size:10px;opacity:.6;margin-top:2px}
 .ev-phone .call{display:flex;justify-content:space-between;gap:8px;padding:6px 2px;border-bottom:1px solid #1e1a1c;font-size:13px}
 .ev-phone .call small{color:#999;font-size:11px}
-.ev-phone .note{background:#f6e7a8;color:#3a3220;border-radius:8px;padding:10px;font-family:var(--hand);font-size:16px;line-height:1.5}
+.ev-phone .pmemo{background:#f6e7a8;color:#3a3220;border-radius:8px;padding:10px;font-family:var(--hand);font-size:16px;line-height:1.5}
 /* CCTV */
 .ev-cctv{position:relative;background:#0b0c0c;color:#cfd5d2;border:1px solid #333;padding:10px 12px 12px;filter:grayscale(1);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
 .ev-cctv .ct{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:#e5e5e5}
@@ -3048,7 +3048,7 @@ function ask(id,who){
   S.lastWho=S.lastWho||{};S.lastWho[id]=who;
   S.askFor=null;save();render();
 }
-function reMk(c,x){const M=MASK[x[0]];if(!(x[7]&&M&&M.ans&&M.ans[c.id]!==undefined&&c.ans&&c.ans[x[0]]!==undefined))return false;const r=resolveAns(c.ans[x[0]]);return !!r.t&&r.t!==x[1];}
+function reMk(c,x){const M=MASK[x[0]];if(!(x[7]&&M&&M.ans&&M.ans[c.id]!==undefined&&c.ans&&c.ans[x[0]]!==undefined))return false;const r=resolveAns(c.ans[x[0]]);return !!((r.g&&!has(r.g))||(r.g2||[]).some(z=>!has(z)));}
 function anyReask(w){return Object.keys(S.qa||{}).some(id=>CM[id]&&(S.qa[id]||[]).some(x=>x[0]===w&&!x[4]&&reMk(CM[id],x)&&!S.qa[id].some(y=>y[0]===w&&y!==x&&!y[4]&&!reMk(CM[id],y))));}
 function qaBlock(id,compact){
   const c=CM[id];if(!c.q)return "";const okN=x=>has(x)&&(!CM[x].u||S.attr[x]);if(c.qneed&&!c.qneed.every(okN))return "";if(c.qneedAny&&!c.qneedAny.some(okN))return "";const to=toOf(c);
@@ -3247,7 +3247,7 @@ function viewHTML(c){
   case "phone":{
     let body="";
     if(v.app==="통화")body=L(v.items).map(x=>`<div class="call"><span>${esc(x.t)}<br><small>${esc(x.sub||"")}</small></span><small>${esc(x.time||"")}</small></div>`).join("");
-    else if(v.app==="메모")body=`<div class="note">${L(v.items).map(x=>esc(x.t)).join("<br>")}</div>`;
+    else if(v.app==="메모")body=`<div class="pmemo">${L(v.items).map(x=>esc(x.t)).join("<br>")}</div>`;
     else body=L(v.items).map(x=>`<div class="m ${x.me?"me":""}">${esc(x.t)}<small>${esc(x.time||"")}</small></div>`).join("");
     return `<div class="ev ev-phone"><div class="ph">${esc(v.app||"메시지")}<b>${esc(v.head||"")}</b></div><div class="bl">${body}</div></div>`;}
   case "cctv":{
@@ -3398,6 +3398,7 @@ function endView(){
 function saidBy(c,who){
   const log=(S.qa[c.id]||[]).filter(x=>x[0]===who);
   if(!c.q)return "";
+  if(!log.length){let qb="";const sv=S.askFor;try{S.askFor=c.id;qb=qaBlock(c.id)||"";}catch(e){}S.askFor=sv;if(!qb.includes(`data-askwho="${who}"`))return "";}
   if(!log.length)return `<div class="qa"><div class="q">${esc(qOf(c))}</div><div class="a"><b>${esc(PM[who].name)}</b><span style="color:var(--muted)">아직 묻지 않았다.</span></div></div>${S.phase!=="end"?`<button class="ask" data-askwho="${who}" data-askid="${c.id}">${esc(PM[who].name)}에게 묻는다</button>`:""}`;
   return `<div class="qa"><div class="q">${esc(qOf(c))}</div>${log.map(([w,t,y,g,r])=>`<div class="a ${y?"yes":""} ${r?"rb":""}"><b>${esc(PM[w].name)}${r?" · 끼어든다":""}</b>${esc(t)}</div>`).join("")}</div>`;
 }
