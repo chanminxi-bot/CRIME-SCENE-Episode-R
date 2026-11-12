@@ -1238,7 +1238,7 @@ function 인물(o){window.__CHARS.push(o)}
  tl:[["23:40","기도실 난로에 장작 여섯 개가 들어갔다"],["23:50 무렵","난로의 배기가 막혔다 (장작 상태로 추정)"]],
  sum:"23:40 장작을 넣고 10분 안팎에 배기가 막혔다",
  q:"장작을 넣고 곧바로 연통이 막혔습니다. 그 무렵 기도실 근처에 누가 있었습니까?", to:"sungmin", why:"기도실 시중 안성민"},
-{id:"p_ledger", n:"서랍 속 장부 원본", k:"motive", s:"serim",
+{id:"p_ledger", 충격:{묶음:"ledger", 누구:"serim", 머리:"모든 칸에 같은 이름", 말:"12억. 돈을 꺼낸 칸마다 박세림. 이 돈이 지나간 길 끝에는 늘 세림이 서 있다."}, n:"서랍 속 장부 원본", k:"motive", s:"serim",
  t:`강대상 서랍 안쪽, 녹음기 밑에 깔린 장부. 교단 비자금의 원본이다. 돈을 꺼낸 ‘집행’ 칸은 모두 박세림, 그러나 ‘승인’ 칸마다 교주의 도장이 붉게 찍혀 있다. 사무실에서 출력한 사본에는 없던 도장이다.`,
  v:{type:"doc", title:"특별 헌금 출납부 (원본)", lines:["2023.03  산기도원 증축 — 6억 2천","2024.07  미국지부 송금 — 1억 8천","2025.11  문화선교부 음원 구매 대행 — 4억","집행: 박세림 (전 항목)","승인: 구본창 — 도장 (전 항목)"], seal:"구본창"},
  q:"누군가 이 장부를 꺼내려고 서랍을 비집었습니다. 이 장부가 필요한 사람은 누구입니까?", to:"serim", why:"장부를 관리하던 비서 박세림"},
@@ -1356,7 +1356,7 @@ function 인물(o){window.__CHARS.push(o)}
  v:{type:"note", lined:true, lines:["1/16 개인 면담","21:00 구정모 — 언성 높아짐. “차라리 죽어 버리세요.”","21:10 강민희","21:15 김태영","21:20 서우빈","21:30 송형준 (21:35 아버지 전화로 잠시 중단 · 다과 — 안성민)","21:40 마앨런","21:50 박세림","22:00 함원진"], sign:"기록 박세림"},
  tl:[["21:00","정모가 면담 중 ‘차라리 죽어 버리세요’라고 소리쳤다"]],
  q:"‘차라리 죽어 버리세요.’ 면담 중에 한 말이 맞습니까?", to:"jeongmo", why:"그 말을 한 구정모"},
-{id:"o_confess", 충격:{누구:"serim", 머리:"세림의 펜이 바닥에 떨어진다", 말:"12억. 서명란만 비어 있다. 늘 반듯하던 세림의 손가락이 서명란 위에서 떨린다."}, re:"세림의 펜 끝이 떨린다.", n:"자백 각서", k:"motive", s:"serim",
+{id:"o_confess", 충격:{묶음:"ledger", 누구:"serim", 머리:"세림의 펜이 바닥에 떨어진다", 말:"12억. 서명란만 비어 있다. 늘 반듯하던 세림의 손가락이 서명란 위에서 떨린다."}, re:"세림의 펜 끝이 떨린다.", n:"자백 각서", k:"motive", s:"serim",
  t:`서명란만 비어 있는 각서. 이름은 이미 타이핑돼 있다.`,
  v:{type:"doc", title:"자 백 서", lines:["본인 박세림은 2023년부터 2025년까지","교단 특별 헌금 12억 원을 개인 용도로","횡령하였음을 자백합니다.","(교주의 메모) 1/17 오전 경찰 동행"], blank:"서명: ________", seal:"구원교"},
  q:"당신 이름의 자백 각서입니다. 사실입니까?", to:"serim", why:"각서의 당사자 박세림"},
@@ -1443,7 +1443,7 @@ function 인물(o){window.__CHARS.push(o)}
  t:`나리 마을의 집들은 거의 다 교단의 것이다. 한 줄에만 빨간 펜이 지나갔다.`,
  v:{type:"doc", title:"나리 마을 교단 소유 주택", lines:["1번지 함○○","2번지 김○○","3번지 안○○ — 1/17 퇴거 (붉은 펜)","5번지 서○○","…"], seal:"구원교"},
  q:"3번지 안○○. 당신 부모님 댁입니까?", to:"sungmin", why:"성이 같은 안성민"},
-{id:"r_ledger", n:"비자금 장부 사본", k:"motive", s:"serim",
+{id:"r_ledger", 충격:{묶음:"ledger", 누구:"serim", 머리:"모든 칸에 같은 이름", 말:"12억. 줄마다 ‘집행 박세림’. 세림은 이 종이를 밤새 품에 안고 있었다."}, n:"비자금 장부 사본", k:"motive", s:"serim",
  t:`세림의 노트북 가방 속 비자금 장부 사본. 줄마다 ‘집행 박세림’. 그런데 ‘승인’ 칸엔 도장이 없다. 23:41 사무실 복합기로 출력됐다. 맨 뒷장에 세림의 메모가 있다.`,
  v:{type:"note", lines:["집행은 내가 했다. 승인은 아버지가 했다.","그런데 12억은 내 이름으로 끝난다.","사본엔 도장이 없다. 아무도 안 믿는다.","도장 찍힌 원본만이 나를 꺼내 줄 수 있다.","원본 — 기도실 강대상 서랍."], sign:"박세림"},
  q:"이 장부 사본은 왜 만들었습니까?", to:"serim", why:"장부를 가진 박세림"},
@@ -1571,7 +1571,7 @@ function 인물(o){window.__CHARS.push(o)}
  tl:[["23:47 · 23:51 · 23:55","형준이 보일러실에서 버너를 다시 켰다"]], sum:"23:51 형준은 보일러실에서 버너를 다시 켰다",
  f:[["수련원의 구조","보일러실 열쇠는 관리인 형준만 가지고 있다."]]},
 
-{id:"r_ledger_burnt", n:"타다 남은 장부 사본", k:"motive", s:"serim",
+{id:"r_ledger_burnt", 충격:{묶음:"ledger", 누구:"serim", 머리:"타지 않은 이름", 말:"숫자는 다 탔는데 이름 하나는 선명하다. 박세림. 누군가 이 장부가 사라지길 바랐다."}, n:"타다 남은 장부 사본", k:"motive", s:"serim",
  t:`소각로 재 속에서 건진 종이 몇 장. 숫자는 대부분 탔다. ‘집행 박세림’이라는 글씨와, 맨 뒷장 메모의 끝부분만 남았다.`,
  v:{type:"note", lines:["…승인은 아버지가 했다.","…12억은 내 이름으로 끝난다.","…원본 — 기도실 강대상 서랍."], sign:"박세림"},
  q:"당신이 태우려던 장부 사본입니다. 왜 태웠습니까?", to:"serim", why:"사본을 태운 박세림"},
@@ -1742,7 +1742,7 @@ function 인물(o){window.__CHARS.push(o)}
  t:`설교 테이프를 거꾸로 감아 반 속도로 틀자, 웅얼거림 속에서 교주의 목소리가 또렷해진다.`,
  v:{type:"rec", dev:"강단 아래 카세트 · 역재생", file:"B면", hot:"나오지 마라", lines:[["--:--","[거꾸로 감기는 테이프. 늘어진 찬송]"],["--:--","교주: 순애야. 노래가 끝날 때까지, 거기서 나오지 마라."],["--:--","[긴 숨소리. 테이프가 끊긴다]"]]},
  f:[["산기도원","교주의 설교 테이프 뒷면에 거꾸로 녹음된 목소리가 있다. ‘순애야. 노래가 끝날 때까지, 거기서 나오지 마라.’"]]},
-{id:"o_ledgerpz", n:"찢긴 장부 한 장", k:"amb", s:"serim", s2:["allen"],
+{id:"o_ledgerpz", 충격:{묶음:"ledger", 누구:"serim", 머리:"떠넘겨진 12억", 말:"맞춘 문장 끝에 이름 하나가 남는다. 박세림. 12억이 한 사람에게 떠넘겨지고 있었다."}, n:"찢긴 장부 한 장", k:"amb", s:"serim",
  t:`수련회 본부 파쇄기 옆 휴지통에서 맞춘 종이. 장부의 마지막 장, 교주의 글씨다.`,
  v:{type:"doc", title:"찢긴 장부 한 장 — 교주의 글씨", lines:["2023~2025 비자금 총 12억.","이 돈은 처음부터 박 실장이 혼자 빼돌린 것으로 한다.","결재란에는 박세림의 이름만 남기고, 나머지 장은 모두 태울 것."]},
  q:"이 장부를 찢어 버린 사람이 당신입니까?", to:"serim", why:"결재란의 박세림"},
@@ -2890,18 +2890,20 @@ function ask(id,who){
   S.lastWho=S.lastWho||{};S.lastWho[id]=who;
   S.askFor=null;save();render();
 }
+function reMk(c,x){const M=MASK[x[0]];if(!(x[7]&&M&&M.ans&&M.ans[c.id]!==undefined&&c.ans&&c.ans[x[0]]!==undefined))return false;const r=resolveAns(c.ans[x[0]]);return !!r.t&&r.t!==x[1];}
+function anyReask(w){return Object.keys(S.qa||{}).some(id=>CM[id]&&(S.qa[id]||[]).some(x=>x[0]===w&&!x[4]&&reMk(CM[id],x)&&!S.qa[id].some(y=>y[0]===w&&y!==x&&!y[4]&&!reMk(CM[id],y))));}
 function qaBlock(id,compact){
   const c=CM[id];if(!c.q)return "";const okN=x=>has(x)&&(!CM[x].u||S.attr[x]);if(c.qneed&&!c.qneed.every(okN))return "";if(c.qneedAny&&!c.qneedAny.some(okN))return "";const to=toOf(c);
   const log=S.qa[id]||[];
   let h="";
   let show=log;
   if(compact&&!to&&S.lastWho&&S.lastWho[id]){const lw=S.lastWho[id];show=log.filter(x=>x[0]===lw&&!x[4]).slice(-1);}
-  if(show.length)h+=`<div class="qa">${show.map(([w,t,y,g,r,_R,m])=>`${!r?`<div class="q">${to?esc(PM[to].name)+"에게: ":""}${esc(qOf(c))}</div>`:""}<div class="a ${y?"yes":""} ${g?"gave":""} ${r?"rb":""} ${m?"unmask":""}">${m?`<span class="mkst">가면이 벗겨졌다 · 앞서 들은 대답을 다시 물어볼 수 있다</span>`:""}<b>${esc(PM[w].name)}${r?" · 끼어든다":""}</b>${esc(t)}${y?"<i style=\"color:#2c5d9a\">→ 주인 확인</i>":""}${g?`<i>→ 새 진술: ${esc(CM[g].n)}</i>`:""}</div>`).join("")}</div>`;
+  if(show.length)h+=`<div class="qa">${show.map(([w,t,y,g,r,_R,m])=>`${!r?`<div class="q">${to?esc(PM[to].name)+"에게: ":""}${esc(qOf(c))}</div>`:""}<div class="a ${y?"yes":""} ${g?"gave":""} ${r?"rb":""} ${m?"unmask":""}">${m?`<span class="mkst">가면이 벗겨졌다${anyReask(w)?" · 앞서 들은 대답을 다시 물어볼 수 있다":""}</span>`:""}<b>${esc(PM[w].name)}${r?" · 끼어든다":""}</b>${esc(t)}${y?"<i style=\"color:#2c5d9a\">→ 주인 확인</i>":""}${g?`<i>→ 새 진술: ${esc(CM[g].n)}</i>`:""}</div>`).join("")}</div>`;
   const newInfo=w=>{const an=c.ans&&c.ans[w];if(an===undefined||(c.u&&w===c.u.o&&!S.attr[id]))return false;const r=resolveAns(an);return !!(r.g&&!has(r.g))||(r.g2||[]).some(x=>!has(x));};
-  const R=round(),askedNow=w=>!newInfo(w)&&log.some(x=>x[0]===w&&!x[4]&&x[5]===R&&!(x[7]&&!masked(w)));
+  const R=round(),askedNow=w=>!newInfo(w)&&log.some(x=>x[0]===w&&!x[4]&&x[5]===R&&!(reMk(c,x)&&!masked(w)));
   if(to&&(altOn(c)||!(c.u&&!S.attr[id]))){
     const changes=Array.isArray(c.ans&&c.ans[to])||(c.rb&&Array.isArray(c.rb.t));
-    const asked=!newInfo(to)&&(askedNow(to)||(R===2&&!changes&&log.some(x=>x[0]===to&&!x[4]&&!(x[7]&&!masked(to)))));
+    const asked=!newInfo(to)&&(askedNow(to)||(R===2&&!changes&&log.some(x=>x[0]===to&&!x[4]&&!(reMk(c,x)&&!masked(to)))));
     if(S.phase!=="end"&&!asked)h+=`<button class="ask" data-askwho="${to}" data-askid="${id}">${esc((altOn(c)?c.toAlt.why:c.why)||PM[to].name)}에게 묻는다 — ${esc(qOf(c))}</button>`;
     return h;
   }
@@ -3020,7 +3022,7 @@ function tagsOf(c){
   if(c.s&&!ukOpen(c)&&!clrd(c)&&susOf(c).length)t.push("의심 · "+susOf(c).map(x=>PM[x].name).join(" · "));
   if(c.u&&!S.attr[c.id])t.push("주인 모를 증거");
   if(S.attr[c.id])t.push("주인 · "+PM[S.attr[c.id]].name);
-  {const rl=((S.qa||{})[c.id]||[]).filter(x=>x[7]&&!masked(x[0])&&!(S.qa[c.id]||[]).some(y=>y[0]===x[0]&&!y[7]&&y!==x&&!y[4])).map(x=>PM[x[0]].name);if(rl.length)t.push("다시 물어볼 수 있다 · "+[...new Set(rl)].join(" · "));}
+  {let qb="";const sv=S.askFor;try{S.askFor=c.id;qb=qaBlock(c.id)||"";}catch(e){}S.askFor=sv;const rl=((S.qa||{})[c.id]||[]).filter(x=>reMk(c,x)&&!x[4]&&!masked(x[0])&&!(S.qa[c.id]||[]).some(y=>y[0]===x[0]&&!reMk(c,y)&&y!==x&&!y[4])&&qb.includes(`data-askwho="${x[0]}"`)).map(x=>PM[x[0]].name);if(rl.length)t.push("다시 물어볼 수 있다 · "+[...new Set(rl)].join(" · "));}
   (c.a||[]).forEach(([p,k])=>{if(k==="bad"&&moHidden(c,p))return;t.push("알리바이 · "+PM[p].name+(k==="ok"?" 확인":" 반박"));});
   return t;
 }
@@ -3059,7 +3061,7 @@ function doAct(id){
   if(!did(id)){
     const R=round();
     const RU=S.ruin||{};const nw=(a.c||[]).map(x=>RU[x]?(RONLY.has(RU[x])?null:RU[x]):x).filter(x=>x&&!has(x));S.done.push(id);nw.forEach(x=>S.found.push(x));
-    const sh=nw.find(x=>CM[x]&&CM[x].충격)||(a.shockAlways?(a.c||[]).find(x=>CM[x]&&CM[x].충격):null);S.shock=sh||null;if(sh)sfx("sting");
+    const shOk=x=>CM[x]&&CM[x].충격&&!(CM[x].충격.묶음&&(S.shG||{})[CM[x].충격.묶음]);const sh=nw.find(shOk)||(a.shockAlways?(a.c||[]).find(x=>CM[x]&&CM[x].충격):null);S.shock=sh||null;if(sh){sfx("sting");const g=CM[sh].충격.묶음;if(g){S.shG=S.shG||{};S.shG[g]=1;}}
     if(!sh&&(a.c||[]).some(x=>CM[x]&&CM[x].v&&[].concat(CM[x].v).some(v=>v.type==="rec")))sfx("tape");
     if(CLK[R]&&a.c)spend(R,1);
   }
