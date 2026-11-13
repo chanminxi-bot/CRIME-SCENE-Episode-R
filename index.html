@@ -501,6 +501,15 @@ body.blackout::after{content:"";position:fixed;inset:0;pointer-events:none;z-ind
 .refbox{background:#2a1416;border-color:#8c2a2a;color:#f6e7e8}.refbox div{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:13.5px}.refbox span{opacity:.75}.refbox b{font-family:var(--mono);color:#ffb3b8}
 .tomap{display:block;width:100%;margin:0 0 12px;padding:12px 14px;border-radius:12px;border:1px solid var(--spot);background:#1a1510;color:var(--spot);font:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
 .tomap.low{margin:14px 0 12px;text-align:center}
+
+/* 금고 다이얼 */
+.dialrow{display:flex;justify-content:center;gap:8px;margin:12px 0 10px}
+.dwheel{display:flex;flex-direction:column;align-items:center;width:58px;border-radius:10px;background:linear-gradient(180deg,#0b0b0c,#1d1b1a 45%,#1d1b1a 55%,#0b0b0c);border:1px solid #3a3530;overflow:hidden}
+.dbtn{width:100%;height:44px;border:0;background:transparent;color:#cfc4b6;font-size:16px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.dbtn:active{background:rgba(255,255,255,.08)}
+.dnum{font-family:var(--mono);font-size:15px;color:#5d5650;line-height:1.5;user-select:none}
+.dcur{font-family:var(--mono);font-size:30px;font-weight:700;color:var(--spot);line-height:1.3;width:100%;text-align:center;border-top:1px solid #3a3530;border-bottom:1px solid #3a3530;background:#141210;user-select:none}
+.dopen{width:100%;margin-bottom:6px}
 </style>
 
 </head>
@@ -946,7 +955,7 @@ function 인물(o){window.__CHARS.push(o)}
 
   자물쇠: {
     cellar:{label:"기도실 바닥 문 자물쇠", prompt:"숫자 3자리 — 녹슨 자물쇠 옆면에 ‘찬송’이라고 새겨져 있다.", ans:"312", hint:"아버지가 기도회를 열 때마다 첫 곡으로 부르게 한 찬송."},
-    safe:{label:"교주 방 벽장 금고", prompt:"숫자 4자리", ans:"0205", hint:"교주가 가장 아끼는 날짜일지도. 이 방 어딘가에."},
+    safe:{label:"교주 방 벽장 금고", dial:true, prompt:"숫자 다이얼 4칸. ▲▼로 숫자를 맞추고 다이얼을 당긴다.", ans:"0205", hint:"교주가 가장 아끼는 날짜일지도. 이 방 어딘가에."},
     desk:{label:"강대상 서랍", prompt:"작은 놋쇠 자물쇠가 걸려 있다.", needClue:"p_keys", keyOnly:true, keyText:"교주의 열쇠꾸러미에 달린 놋쇠 열쇠로 연다", noKey:"맞는 열쇠가 없다. 교주의 소지품을 다시 살펴보자."},
     cctv:{label:"사무실 CCTV 녹화기", prompt:"숫자 4자리 — 녹화기 옆에 쪽지가 붙어 있다: ‘길은 하나다. — 아버지’", ans:"1406", hint:"‘길’을 말한 구절이 있다. 아버지가 가장 아끼던 책 어딘가에. 장과 절을 숫자로."},
     bag:{label:"검은 가방의 다이얼", prompt:"숫자 4자리", ans:"0917", hint:"주인의 생일일까? 교단은 새로 온 사람의 모든 것을 적어 둔다."},
@@ -3217,6 +3226,11 @@ function lockBox(k){
   if(v.keyOnly){
     return `<div class="lockbox"><b>${esc(v.label)}</b><span class="hint">${esc(v.prompt)}</span>${has(v.needClue)?`<button class="primary" data-key="${k}">${esc(v.keyText||"찾은 열쇠로 연다")}</button>`:`<span class="err">${esc(v.noKey||"맞는 열쇠가 없다. 어딘가에 있을 것이다.")}</span>`}</div>`;
   }
+  if(v.dial){const n=String(v.ans).length;S.dial=S.dial||{};const dv=S.dial[k]=(S.dial[k]||Array(n).fill(0)).slice(0,n);
+    return `<div class="lockbox"><b>${esc(v.label)}</b><span class="hint">${esc(v.prompt)}</span>
+    <div class="dialrow">${dv.map((x,j)=>`<div class="dwheel"><button type="button" class="dbtn" data-dial="${k}" data-dj="${j}" data-dd="1" aria-label="${j+1}번째 숫자 올리기">▲</button><span class="dnum">${(x+9)%10}</span><span class="dcur">${x}</span><span class="dnum">${(x+1)%10}</span><button type="button" class="dbtn" data-dial="${k}" data-dj="${j}" data-dd="-1" aria-label="${j+1}번째 숫자 내리기">▼</button></div>`).join("")}</div>
+    <button type="button" class="primary dopen" data-dopen="${k}">다이얼을 당겨 연다</button>
+    ${S.lockErr?`<span class="err">${esc(S.lockErr)}</span>`:""}${v.hint?`<span class="hint">${esc(v.hint)}</span>`:""}</div>`;}
   return `<div class="lockbox"><b>${esc(v.label)}</b><span class="hint">${esc(v.prompt)}</span>
    ${v.sentence?"":`<div class="ldisp" id="ld-${k}">${"_ ".repeat(v.len||String(v.ans).length).trim()}</div>`}<form class="lrow" data-form="${k}"><input id="in-${k}" autocomplete="off" ${v.sentence?"":'inputmode="numeric"'} placeholder="${v.sentence?"문장 입력":"입력"}"><button type="submit">열기</button></form>
    ${S.lockErr?`<span class="err">${esc(S.lockErr)}</span>`:""}${v.hint?`<span class="hint">${esc(v.hint)}</span>`:""}</div>`;
@@ -3762,10 +3776,13 @@ function bind(v){
   v.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>{S.toast="";const a=A.find(x=>x.id===b.dataset.act);if(a&&a.game&&!did(a.id)){S.game=a.id;S.gs=null;render();return;}doAct(b.dataset.act)});
   bindGame(v);
   v.querySelectorAll("[data-lock]").forEach(b=>b.onclick=()=>{S.lockOpen=b.dataset.lock;S.lockErr="";save();render();});
+  v.querySelectorAll("[data-dial]").forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.dial,j=+b.dataset.dj;S.dial=S.dial||{};const a=S.dial[k];a[j]=(a[j]+(+b.dataset.dd)+10)%10;S.lockErr="";sfx("tape");save();render();});
+  v.querySelectorAll("[data-dopen]").forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.dopen;tryLock(k,(S.dial&&S.dial[k]||[]).join(""));if(!S.unl.includes(k))sfx("knock");});
   v.querySelectorAll("[data-form]").forEach(f=>f.onsubmit=e=>{e.preventDefault();tryLock(f.dataset.form,f.querySelector("input").value)});
+  v.querySelectorAll("[data-form] button[type=submit]").forEach(b=>b.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse")return;e.preventDefault();const f=b.closest("form");tryLock(f.dataset.form,f.querySelector("input").value);}));
   v.querySelectorAll("[data-form] input").forEach(i=>{const k=i.closest("form").dataset.form,d=document.getElementById("ld-"+k),n=String(LOCKS[k].ans).length;
-    const upd=()=>{if(d){const t=i.value.replace(/\s/g,"");d.textContent=Array.from({length:Math.max(n,t.length)},(_,j)=>t[j]||"_").join(" ");}};
-    i.addEventListener("input",upd);i.addEventListener("keyup",upd);i.addEventListener("pointerdown",()=>{i.__y=window.scrollY;},{passive:true});i.addEventListener("focus",()=>{const y0=i.__y!=null?i.__y:window.scrollY;const fix=()=>{const ov=i.closest("[data-lockov]");if(!ov)return;if(window.visualViewport&&visualViewport.height<innerHeight*0.8)ov.classList.add("kb");if(Math.abs(window.scrollY-y0)>1)window.scrollTo(0,y0);const pop=i.closest(".pop");if(pop){const d=i.getBoundingClientRect().top-pop.getBoundingClientRect().top;if(d>pop.clientHeight-60)pop.scrollTop+=d-40;}};fix();[80,300,600].forEach(t=>setTimeout(fix,t));if(window.visualViewport){const vr=()=>fix();visualViewport.addEventListener("resize",vr);i.addEventListener("blur",()=>visualViewport.removeEventListener("resize",vr),{once:true});}});i.addEventListener("blur",()=>{const ov=i.closest("[data-lockov]");if(ov)ov.classList.remove("kb");});upd();});
+    const upd=()=>{const t=i.value.replace(/\s/g,"");if(d){d.textContent=Array.from({length:Math.max(n,t.length)},(_,j)=>t[j]||"_").join(" ");}if(!LOCKS[k].sentence&&t.length===n&&i.__last!==t){i.__last=t;clearTimeout(i.__at);i.__at=setTimeout(()=>{if(i.isConnected&&i.value.replace(/\s/g,"")===t)tryLock(k,t);},250);}};
+    i.addEventListener("input",upd);i.addEventListener("keyup",upd);i.addEventListener("pointerdown",()=>{i.__y=window.scrollY;},{passive:true});i.addEventListener("focus",()=>{const y0=i.__y!=null?i.__y:window.scrollY;const fix=()=>{const ov=i.closest("[data-lockov]");if(!ov)return;if(window.visualViewport&&visualViewport.height<innerHeight*0.8)ov.classList.add("kb");if(Math.abs(window.scrollY-y0)>1)window.scrollTo(0,y0);const pop=i.closest(".pop");if(pop){const d=i.getBoundingClientRect().top-pop.getBoundingClientRect().top;if(d>pop.clientHeight-60)pop.scrollTop+=d-40;}};fix();[80,300,600].forEach(t=>setTimeout(fix,t));if(window.visualViewport){const vr=()=>fix();visualViewport.addEventListener("resize",vr);i.addEventListener("blur",()=>visualViewport.removeEventListener("resize",vr),{once:true});}});i.addEventListener("blur",()=>{const ov=i.closest("[data-lockov]");window.__lkBlur=Date.now();if(ov)setTimeout(()=>{if(document.activeElement!==i)ov.classList.remove("kb");},450);});upd();});
   v.querySelectorAll("[data-key]").forEach(b=>b.onclick=()=>{const k=b.dataset.key;S.unl.push(k);S.lockOpen=null;const op=A.find(a=>a.lock===k&&a.open);if(op){S.sub=op.open;S.last=null;if(!did(op.id))S.done.push(op.id);}save();render();});
   v.querySelectorAll("[data-close]").forEach(x=>x.onclick=()=>{S.pop=false;S.askFor=null;S.shock=null;save();render();});
   v.querySelectorAll("[data-popov]").forEach(x=>x.onclick=e=>{if(e.target===x){S.pop=false;S.askFor=null;save();render();}});
@@ -3784,7 +3801,7 @@ function bind(v){
   v.querySelectorAll("[data-evq]").forEach(x=>x.onclick=()=>{const e=EVS.find(z=>z.id===S.evCard);if(!e)return;const i=+x.dataset.evq;S.evQ=S.evQ||{};if(i===e.질문.정답){S.evQ[e.id+"_ok"]=1;}else{S.evQ[e.id+"_w"]=(S.evQ[e.id+"_w"]||[]).concat(i);sfx("knock");}save();render();});
   v.querySelectorAll("[data-mute]").forEach(x=>x.onclick=()=>{S.mute=!S.mute;save();render();});
   v.querySelectorAll("[data-lockclose]").forEach(x=>x.onclick=()=>{S.lockOpen=null;S.lockErr="";save();render();});
-  v.querySelectorAll("[data-lockov]").forEach(x=>x.onclick=e=>{if(e.target===x){S.lockOpen=null;S.lockErr="";save();render();}});
+  v.querySelectorAll("[data-lockov]").forEach(x=>x.onclick=e=>{if(e.target===x&&!(Date.now()-(window.__lkBlur||0)<700)&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest("[data-lockov]"))){S.lockOpen=null;S.lockErr="";save();render();}});
   v.querySelectorAll("[data-r2ok]").forEach(x=>x.onclick=()=>{S.r2seen=true;save();render();});
   v.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{const t=b.dataset.back;S.sub=SUBS[t]?t:null;S.last=null;S.lockOpen=null;S.askFor=null;save();render();});
   v.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{S.pick=b.dataset.pick;S.defShown=false;S.flash="";save();render();});
